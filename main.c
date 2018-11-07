@@ -6,11 +6,12 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 12:10:50 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 14:42:14 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <ctype.h>
 
 int		main(int argc, char **argv)
 {
@@ -26,5 +27,8 @@ int		main(int argc, char **argv)
 	
 	ft_putendl("\nstrlen:\n");
 	ft_putstr("Bonjour is "); ft_putnbr(ft_strlen("Bonjour")); ft_putendl(" char long\n");
+	ft_putendl("isalpha:\n");
+	ft_putstr("is G alpha? isalpha: "); ft_putnbr(isalpha('z')); ft_putstr(" ft_isalpha: "); ft_putnbr(ft_isalpha('z'));
+	ft_putendl("");
 	return (0);
 }

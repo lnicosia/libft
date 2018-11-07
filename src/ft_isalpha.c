@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 14:38:36 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/08/09 13:59:00 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/07 14:41:16 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char const *s);
-void	ft_putendl(char const *s);
-size_t	ft_strlen(const char *str);
-void	ft_putnbr(int nb);
-char	*ft_strdup(const char *s1);
-int		ft_isalpha(int c);
-
-#endif
+int		ft_isalpha(int c)
+{
+	if ((c < 65 || c > 90) && (c < 97 || c > 122))
+		return (0);
+	return (1);
+}

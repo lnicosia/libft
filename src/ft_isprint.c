@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 14:38:36 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/07 14:32:11 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/07 14:48:56 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char const *s);
-void	ft_putendl(char const *s);
-size_t	ft_strlen(const char *str);
-void	ft_putnbr(int nb);
-char	*ft_strdup(const char *s1);
-int		ft_isalpha(int c);
-
-#endif
+int		ft_isprint(int c)
+{
+	if ((c > 31 && c < 128) || (c > 8 && c < 14))
+		return (1);
+	return (0);
+}
