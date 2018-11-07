@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 11:50:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 12:06:07 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int		main(int argc, char **argv)
 	(void) argc;
 	(void) argv;
 	
-	ft_putstr("This is a test for my own libft (seems like putchar and putstr are working)\n\nputnbr:\n\n");
+	ft_putendl("This is a test for my own libft");
+	ft_putendl("\nputnbr:\n");
 	ft_putnbr(-2147483648); ft_putchar('\n');
 	ft_putnbr(2147483647); ft_putchar('\n');
 	ft_putnbr(0); ft_putchar('\n');

@@ -6,15 +6,15 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 10:37:14 by lnicosia          #+#    #+#              #
-#    Updated: 2018/11/07 11:53:49 by lnicosia         ###   ########.fr        #
+#    Updated: 2018/11/07 12:02:59 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = src/ft_putchar.c src/ft_putstr.c src/ft_strlen.c src/ft_putnbr.c
+SRC = src/ft_putchar.c src/ft_putstr.c src/ft_putendl.c src/ft_strlen.c src/ft_putnbr.c
 
-OBJ = ft_putchar.o ft_putstr.o ft_strlen.o ft_putnbr.o
+OBJ = ft_putchar.o ft_putstr.o ft_putendl.o ft_strlen.o ft_putnbr.o
 
 FLAGS = -Wall -Wextra -Werror
 
