@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 15:13:17 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 17:17:21 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,13 @@ int		main(int argc, char **argv)
 	ft_putstr("\nis A alnum? isalnum: "); ft_putnbr(isalnum('A')); ft_putstr(" ft_isalnum: "); ft_putnbr(ft_isalnum('A'));
 	ft_putstr("\nis @ alnum? isalnum: "); ft_putnbr(isalnum('@')); ft_putstr(" ft_isalnum: "); ft_putnbr(ft_isalnum('@'));
 	ft_putendl("");
+
+	char str1[] = "0123456789";
+	char str2[] = "0123456789";
+	ft_putendl("memset:\n");
+	ft_putstr("b: \""); ft_putstr(str1); ft_putendl("\" c: \'a\' len: 9");
+	char *str3 = memset(str1, 97, 9);
+	char *str4 = ft_memset(str2, 97, 9);
+	ft_putstr("memset:		"); ft_putendl(str3); ft_putstr("ft_memset:	"); ft_putendl(str4);
 	return (0);
 }

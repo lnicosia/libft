@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 15:05:25 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 16:54:38 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+void	*ft_memset(void *b, int c, size_t len);
 
 #endif

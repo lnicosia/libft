@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:58:18 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 16:38:41 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 17:08:48 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memset(void *b, int c, size_t len)
 
 	i = 0;
 	str = b;
-	cchar = '0' + c;
+	cchar = c;
 	while (i < len)
 	{
 		str[i] = cchar;
