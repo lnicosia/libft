@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 17:25:08 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 17:40:09 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,21 @@ int		main(int argc, char **argv)
 	char *str3 = memset(str1, 'a', 9);
 	char *str4 = ft_memset(str2, 'a', 9);
 	ft_putstr("memset:		"); ft_putendl(str3); ft_putstr("ft_memset:	"); ft_putendl(str4);
+	
 	ft_putendl("\n\nbzero: \n\n0123456789");
 	char str5[] = "0123456789";
 	char str6[] = "0123456789";
 	bzero(str5, 4);
 	ft_bzero(str6, 4);
 	ft_putstr("bzero:		"); ft_putendl(str5); ft_putstr("ft_bzero:	"); ft_putendl(str6);
+	
+	ft_putendl("\n\nmemcpy: \n\nsrc: 0123456789 dst: aaaaaaaaaa n: 4");
+	char str7[] = "0123456789";
+	char str8[] = "0123456789";
+	char str9[] = "aaaaaaaaaa";
+	char str10[] = "aaaaaaaaaa";
+	memcpy(str7, str9, 4);
+	ft_memcpy(str8, str10, 4);
+	ft_putstr("memcpy:		"); ft_putendl(str7); ft_putstr("ft_memcpy:	"); ft_putendl(str8);
 	return (0);
 }
