@@ -6,22 +6,22 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 15:00:03 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/08/14 15:16:41 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 12:42:58 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, int nb)
+#include "../libft.h"
+
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
 	int i;
-	int j;
+	size_t j;
 
 	i = 0;
 	j = 0;
-	if (nb < 0)
-		return (dest);
 	while (dest[i])
 		i++;
-	while (src[j] && j < nb)
+	while (src[j] && j < n)
 	{
 		dest[i] = src[j];
 		j++;

@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 11:58:28 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 12:59:47 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
-int		ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 void	ft_putnbr(int nb);
+char	*ft_strdup(const char *s1);
 
 #endif

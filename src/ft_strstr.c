@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_haystackhaystack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 12:36:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/08/14 14:11:42 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 12:58:56 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+#include "../libft.h"
+
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int i;
-	int j;
+	int 	i;
+	int 	j;
+	char	*str;
 
 	i = 0;
 	j = 0;
-	if (!to_find[0])
+	str = ft_strdup(haystack);
+	if (!needle[0])
 		return (str);
 	while (str[i])
 	{
-		if (to_find[0] == str[i])
+		if (needle[0] == haystack[i])
 		{
 			j = 0;
-			while (to_find[j] == str[i + j] && to_find[j])
+			while (needle[j] == str[i + j] && needle[j])
 			{
 				j++;
 			}
-			if (!to_find[j])
+			if (!needle[j])
 			{
 				return (str + i);
 			}

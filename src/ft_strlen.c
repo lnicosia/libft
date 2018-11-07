@@ -6,11 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:47:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 12:08:20 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 12:26:15 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include "../libft.h"
+
+size_t	ft_strlen(const char *str)
 {
 	int	res;
 
