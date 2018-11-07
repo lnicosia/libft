@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 17:40:09 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 17:57:17 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,14 @@ int		main(int argc, char **argv)
 	memcpy(str7, str9, 4);
 	ft_memcpy(str8, str10, 4);
 	ft_putstr("memcpy:		"); ft_putendl(str7); ft_putstr("ft_memcpy:	"); ft_putendl(str8);
+	
+	ft_putendl("\n\nmemccpy: \n\nsrc: 0123456789 dst: aaaaaaaaaa c: \'5\' n: 7");
+	char str11[] = "0123456789";
+	char str12[] = "0123456789";
+	char str13[] = "aaaaaaaaaa";
+	char str14[] = "aaaaaaaaaa";
+	memccpy(str13, str11, '5', 7);
+	ft_memccpy(str14, str12, '5', 7);
+	ft_putstr("memccpy:	"); ft_putendl(str13); ft_putstr("ft_memccpy:	"); ft_putendl(str14);
 	return (0);
 }
