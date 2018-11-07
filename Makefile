@@ -6,15 +6,15 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 10:37:14 by lnicosia          #+#    #+#              #
-#    Updated: 2018/11/07 10:45:22 by lnicosia         ###   ########.fr        #
+#    Updated: 2018/11/07 11:53:49 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = 
+SRC = src/ft_putchar.c src/ft_putstr.c src/ft_strlen.c src/ft_putnbr.c
 
-OBJ = 
+OBJ = ft_putchar.o ft_putstr.o ft_strlen.o ft_putnbr.o
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -24,6 +24,9 @@ $(NAME):
 	gcc $(FLAGS) -c $(SRC)
 	ar r $(NAME) $(OBJ)
 	ranlib $(NAME)
+
+main:
+	gcc $(FLAGS) main.c $(SRC)
 
 clean:
 	rm -Rf $(OBJ)

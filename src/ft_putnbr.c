@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 11:50:00 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/07 11:43:16 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int		main(int argc, char **argv)
+void	ft_putnbr(int nb)
 {
-	(void) argc;
-	(void) argv;
-	
-	ft_putstr("This is a test for my own libft (seems like putchar and putstr are working)\n\nputnbr:\n\n");
-	ft_putnbr(-2147483648); ft_putchar('\n');
-	ft_putnbr(2147483647); ft_putchar('\n');
-	ft_putnbr(0); ft_putchar('\n');
-	ft_putnbr(24);
-	
-	ft_putstr("\n\n");
-	return (0);
+	if (nb == -2147483648)
+	{
+		ft_putstr("-2");
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar('-');
+	}
+	if (nb < 10)
+	{
+		ft_putchar('0' + nb);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
 }

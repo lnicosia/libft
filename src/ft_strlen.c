@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 11:50:00 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/05 17:47:40 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/05 17:48:14 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		main(int argc, char **argv)
+int		ft_strlen(char *str)
 {
-	(void) argc;
-	(void) argv;
-	
-	ft_putstr("This is a test for my own libft (seems like putchar and putstr are working)\n\nputnbr:\n\n");
-	ft_putnbr(-2147483648); ft_putchar('\n');
-	ft_putnbr(2147483647); ft_putchar('\n');
-	ft_putnbr(0); ft_putchar('\n');
-	ft_putnbr(24);
-	
-	ft_putstr("\n\n");
-	return (0);
+	int	res;
+
+	res = 0;
+	while (*str)
+	{
+		res++;
+		str++;
+	}
+	return (res);
 }
