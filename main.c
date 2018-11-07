@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 17:17:21 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 17:25:08 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,14 @@ int		main(int argc, char **argv)
 	char str2[] = "0123456789";
 	ft_putendl("memset:\n");
 	ft_putstr("b: \""); ft_putstr(str1); ft_putendl("\" c: \'a\' len: 9");
-	char *str3 = memset(str1, 97, 9);
-	char *str4 = ft_memset(str2, 97, 9);
+	char *str3 = memset(str1, 'a', 9);
+	char *str4 = ft_memset(str2, 'a', 9);
 	ft_putstr("memset:		"); ft_putendl(str3); ft_putstr("ft_memset:	"); ft_putendl(str4);
+	ft_putendl("\n\nbzero: \n\n0123456789");
+	char str5[] = "0123456789";
+	char str6[] = "0123456789";
+	bzero(str5, 4);
+	ft_bzero(str6, 4);
+	ft_putstr("bzero:		"); ft_putendl(str5); ft_putstr("ft_bzero:	"); ft_putendl(str6);
 	return (0);
 }
