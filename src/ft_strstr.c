@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_haystackhaystack.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 12:36:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 12:58:56 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/07 15:15:03 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/07 15:15:46 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	char	*str;
 
 	i = 0;
@@ -33,9 +33,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 				j++;
 			}
 			if (!needle[j])
-			{
 				return (str + i);
-			}
 		}
 		i++;
 	}

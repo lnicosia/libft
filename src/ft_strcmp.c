@@ -6,11 +6,11 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 23:07:11 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 14:05:47 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 15:14:29 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1,const char *s2)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 && *s2)
 	{

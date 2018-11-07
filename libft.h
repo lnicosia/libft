@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 14:38:36 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/07 15:05:25 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ size_t	ft_strlen(const char *str);
 void	ft_putnbr(int nb);
 char	*ft_strdup(const char *s1);
 int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
 
 #endif
