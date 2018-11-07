@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 11:13:24 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/07 11:14:14 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft.h"
 
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char const *s);
-
-#endif
+int		main(int argc, char **argv)
+{
+	(void) argc;
+	(void) argv;
+	ft_putstr("This is a test for my own libft\n");
+	return (0);
+}
