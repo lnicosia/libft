@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:53:38 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 12:31:22 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/08 12:26:08 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ char	*ft_strcpy(char *dst, char *src)
 		dst[i] = src[i];
 		i++;
 	}
-	while (dst[i])
-	{
-		dst[i] = '\0';
-		i++;
-	}
+	dst[i] = '\0';
 	return (dst);
 }
