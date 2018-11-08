@@ -6,13 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:18:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/08 15:39:37 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/08 16:55:41 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_memdel(void	**ap)
+void	ft_memdel(void **ap)
 {
 	if (ap == NULL)
 		return ;
