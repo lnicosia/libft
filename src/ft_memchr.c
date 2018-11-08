@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:49:01 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/08 10:16:45 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/08 11:22:01 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			i;
-	char			*str;
-	unsigned char	cchar;
+	size_t		i;
+	const char	*str;
 
 	i = 0;
-	str = ft_strdup(s);
-	cchar = c;
+	str = s;
 	while (i < n)
 	{
-		if (c == str[i])
-			return (str + i);
+		if ((unsigned char) str[i] == (unsigned char) c)
+			return ((char*)s + i);
 		i++;
 	}
 	return (0);
