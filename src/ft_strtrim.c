@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 09:46:04 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 11:10:35 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 11:18:02 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char			*ft_strtrim(char const *s)
 	size_t	start;
 	size_t	end;
 	size_t	i;
-	char	*st;
+	char	*str;
 
 	i = 0;
 	if (s == NULL)
