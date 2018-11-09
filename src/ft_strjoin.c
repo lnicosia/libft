@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 17:12:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/08 17:29:50 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 09:47:01 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	if (!(str = ft_strnew((ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (0);
-	if (!(str = ft_strcat((char *)s1, s2)))
+	if (!(str = ft_strcpy(str, s1)))
+		return (0);
+	if (!(str = ft_strcat(str, s2)))
 		return (0);
 	if (!s1 || !s2)
 		return (0);
