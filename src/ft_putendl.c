@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/07 12:05:41 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 11:44:02 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl(char const *s)
 {
+	if (!s)
+		return ;
 	ft_putstr(s);
 	ft_putchar('\n');
 }
