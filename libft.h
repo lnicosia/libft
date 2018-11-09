@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 11:48:10 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 13:12:46 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putendl(char const *s);
 size_t	ft_strlen(const char *str);
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strcpy(char *dst, const char *src);
-char	*ft_strncpy(char *dst,const char *src, size_t len);
+char	*ft_strncpy(char *dst, const char *src, size_t len);
 void	ft_putnbr(int nb);
 char	*ft_strdup(const char *s1);
 int		ft_isalpha(int c);
