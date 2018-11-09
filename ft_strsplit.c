@@ -6,13 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 21:50:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:26:11 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 16:26:49 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_nbr_of_words(char const *str, char charset)
+static int		ft_nbr_of_words(char const *str, char charset)
 {
 	int		nbr;
 	int		i;
@@ -37,7 +37,7 @@ int		ft_nbr_of_words(char const *str, char charset)
 	return (nbr);
 }
 
-int		ft_allocate_words(char const *str, char **res, char charset)
+static int		ft_allocate_words(char const *str, char **res, char charset)
 {
 	int		nbr;
 	int		i;
@@ -65,7 +65,7 @@ int		ft_allocate_words(char const *str, char **res, char charset)
 	return (1);
 }
 
-void	ft_fill_res(char const *str, char **res, char charset)
+static void		ft_fill_res(char const *str, char **res, char charset)
 {
 	int		nbr;
 	int		i;
@@ -92,7 +92,7 @@ void	ft_fill_res(char const *str, char **res, char charset)
 	}
 }
 
-char	**ft_strsplit(char const *str, char charset)
+char			**ft_strsplit(char const *str, char charset)
 {
 	int		words;
 	char	**res;

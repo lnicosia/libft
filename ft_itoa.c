@@ -6,13 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:20:20 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:25:26 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 16:26:06 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_get_size(int nbr)
+static int	ft_get_size(int nbr)
 {
 	int	size;
 
@@ -27,7 +27,7 @@ int		ft_get_size(int nbr)
 	return (size);
 }
 
-char	*ft_fillstr(int size, int i, int nbr, char *str)
+static char	*ft_fillstr(int size, int i, int nbr, char *str)
 {
 	while (size > i)
 	{
@@ -38,7 +38,7 @@ char	*ft_fillstr(int size, int i, int nbr, char *str)
 	return (str);
 }
 
-char	*ft_itoa(int nbr)
+char		*ft_itoa(int nbr)
 {
 	int		i;
 	int		size;
