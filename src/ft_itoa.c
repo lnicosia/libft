@@ -6,38 +6,55 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:20:20 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 14:00:36 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/09 15:00:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
+int		ft_get_size(int nbr)
+{
+	int	size;
+
+	size = 0;
+	if (nbr <= 0)
+		size++;
+	while (nbr != 0)
+	{
+		nbr = nbr / 10;
+		size++;
+	}
+	return (size);
+}
+
+char	*ft_fillstr(int size, int i, int nbr, char *str)
+{
+	while (size > i)
+	{
+		str[size - 1] = nbr % 10 + '0';
+		nbr = nbr / 10;
+		size--;
+	}
+	return (str);
+}
+
 char	*ft_itoa(int nbr)
 {
 	int		i;
 	int		size;
-	int		nb2;
 	char	*str;
 
 	i = 0;
 	size = 0;
-	nb2 = nbr;
-	if (nbr < 0)
-		size ++;
-	if (nbr == 0)
-		size++;
-	while (nb2 != 0)
-	{
-		nb2 = nb2 / 10;
-		size++;
-	}
+	size = ft_get_size(nbr);
 	if (!(str = ft_strnew(size)))
 		return (0);
 	if (nbr == -2147483648)
 	{
-		str[--size] = '-';
-		str[--size] = '2';
+		str[0] = '-';
+		str[1] = '2';
 		nbr = 147483648;
+		i = 2;
 	}
 	if (nbr < 0)
 	{
@@ -45,11 +62,6 @@ char	*ft_itoa(int nbr)
 		i = 1;
 		nbr = -nbr;
 	}
-	while (size > i)
-	{
-		str[size - 1] = nbr % 10;
-		nbr = nbr / 10;
-		size--;
-	}
+	str = ft_fillstr(size, i, nbr, str);
 	return (str);
 }
