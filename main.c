@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/12 14:57:39 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 15:04:00 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,10 @@ int		main(int argc, char **argv)
 	ft_lstpushback(&lst, lst4);
 	ft_putstr("len = "); ft_putnbr(ft_lstlen(lst));
 	ft_putchar('\n'); ft_putstr(lst->next->next->next->content);
+
+	ft_putendl("\n\nft_abs:");
+	ft_putstr("\n-4 --> "); ft_putnbr(ft_abs(-4));
+	ft_putstr("\n8 --> "); ft_putnbr(ft_abs(8));
+	ft_putstr("\n0 --> "); ft_putnbr(ft_abs(0));
 	return (0);
 }
