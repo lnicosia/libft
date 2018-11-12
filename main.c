@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 14:40:49 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 14:30:27 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,13 @@ int		main(int argc, char **argv)
 	ft_putstr("memchr:		"); ft_putendl(str17); ft_putstr("ft_memchr:	"); ft_putendl(str18);
 
 	ft_putstr("\n\nft_itoa: ft_itoa(0) : len = "); ft_putnbr(ft_strlen(ft_itoa(0))); ft_putstr(" str = "); ft_putendl(ft_itoa(0));
+
+	ft_putendl("\nft_lstlen:\n");
+	t_list *lst = ft_lstnew("abc", 4);
+	t_list *lst2 = ft_lstnew("123", 4);
+	t_list *lst3 = ft_lstnew("ZYX", 4);
+	lst->next = lst2;
+	lst2->next = lst3;
+	ft_putstr("len = "); ft_putnbr(ft_lstlen(lst));
 	return (0);
 }
