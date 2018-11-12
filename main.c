@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/12 15:04:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 15:34:41 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,14 @@ int		main(int argc, char **argv)
 	ft_putstr("\n-4 --> "); ft_putnbr(ft_abs(-4));
 	ft_putstr("\n8 --> "); ft_putnbr(ft_abs(8));
 	ft_putstr("\n0 --> "); ft_putnbr(ft_abs(0));
+
+	ft_putendl("\n\nft_min + ft_max:");
+	ft_putstr("\nmin -7897 | 0 --> "); ft_putnbr(ft_min(-7897, 0));
+	ft_putstr("\nmin 45 | 45 --> "); ft_putnbr(ft_min(45,45));
+	ft_putstr("\nmax -654 | -654 --> "); ft_putnbr(ft_max(-654,-654));
+	ft_putstr("\nmax 2 | 3 --> "); ft_putnbr(ft_max(2,3));
+	ft_putstr("\nmax -7897 | 0 --> "); ft_putnbr(ft_max(-7897,0));
+	
+	ft_putchar('\n');
 	return (0);
 }
