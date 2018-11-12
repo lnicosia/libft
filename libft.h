@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/12 15:29:55 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 15:43:56 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,9 @@ int				ft_abs(int	nb);
 int				ft_clamp(int nb, int min, int max);
 int				ft_min(int nb1, int nb2);
 int				ft_max(int nb1, int nb2);
+double			ft_fabs(double nb);
+double			ft_fclamp(double nb, double min, double max);
+double			ft_fmin(double nb1, double nb2);
+double			ft_fmax(double nb1, double nb2);
 
 #endif
