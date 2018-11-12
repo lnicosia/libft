@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 17:42:10 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 10:31:33 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void			ft_putnbr_fd(int n, int fd);
 char			*ft_itoa(int nbr);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 
 #endif
