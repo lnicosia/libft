@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:09:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/12 14:30:27 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 14:57:39 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,11 @@ int		main(int argc, char **argv)
 	t_list *lst = ft_lstnew("abc", 4);
 	t_list *lst2 = ft_lstnew("123", 4);
 	t_list *lst3 = ft_lstnew("ZYX", 4);
+	t_list *lst4 = ft_lstnew("987", 4);
 	lst->next = lst2;
 	lst2->next = lst3;
+	ft_lstpushback(&lst, lst4);
 	ft_putstr("len = "); ft_putnbr(ft_lstlen(lst));
+	ft_putchar('\n'); ft_putstr(lst->next->next->next->content);
 	return (0);
 }

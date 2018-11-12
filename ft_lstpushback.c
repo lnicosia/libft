@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 14:17:18 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/12 14:57:29 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/12 14:36:19 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/11/12 14:47:01 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstlen(t_list *lst)
+void	ft_lstpushback(t_list **alst, t_list *new)
 {
-	int	count;
+	t_list	*tmp;
 
-	count = 0;
-	while (lst != NULL)
+	if (!new || !alst)
+		return ;
+	if (!(*alst))
 	{
-		count++;
-		lst = lst->next;
+		(*alst) = new;
+		(*alst)->next = NULL;
 	}
-	return (count);
+	else
+	{
+		tmp = (*alst);
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }
