@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:51:04 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/12 13:37:08 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/12 13:48:22 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 
 	if (!lst || !f)
 		return (NULL);
-	res = ft_lstnew(f(lst)->content, sizeof(f(lst)));
+	res = f(lst);
 	tmp = res;
 	while (lst->next != NULL)
 	{
 		lst = lst->next;
-		tmp->next = ft_lstnew(f(lst)->content, sizeof(f(lst)));
+		tmp->next = f(lst);
 		tmp = tmp->next;
 	}
 	return (res);
