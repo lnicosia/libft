@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/14 10:22:24 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/21 15:08:37 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ double			ft_fabs(double nb);
 double			ft_fclamp(double nb, double min, double max);
 double			ft_fmin(double nb1, double nb2);
 double			ft_fmax(double nb1, double nb2);
+char			*ft_strjoin_free(char *s1, const char *s2);
 
 #endif
