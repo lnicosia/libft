@@ -6,11 +6,11 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:53:38 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/08 12:26:08 by lnicosia         ###   ########.fr       */
+/*   Updated: 2018/11/14 10:14:43 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
 	int i;
 
