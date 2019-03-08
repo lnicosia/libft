@@ -5,33 +5,86 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/07 10:37:14 by lnicosia          #+#    #+#              #
-#    Updated: 2018/11/21 15:02:46 by lnicosia         ###   ########.fr        #
+#    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
+#    Updated: 2019/03/08 11:17:49 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_putchar.c ft_putstr.c ft_putendl.c ft_strlen.c ft_putnbr.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memmove.c ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstlen.c ft_lstpushback.c ft_abs.c ft_clamp.c ft_min.c ft_max.c ft_fabs.c ft_fclamp.c ft_fmin.c ft_fmax.c ft_strjoin_free.c
+MAKEFILE = Makefile
 
-OBJ = ft_putchar.o ft_putstr.o ft_putendl.o ft_strlen.o ft_putnbr.o ft_strdup.o ft_strcpy.o ft_strncpy.o ft_strcat.o ft_strncat.o ft_strlcat.o ft_strstr.o ft_strnstr.o ft_strcmp.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memchr.o ft_memcmp.o ft_memmove.o ft_memalloc.o ft_memdel.o ft_strnew.o ft_strdel.o ft_strclr.o ft_striter.o ft_striteri.o ft_strmap.o ft_strmapi.o ft_strequ.o ft_strnequ.o ft_strsub.o ft_strjoin.o ft_strsplit.o ft_strtrim.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_itoa.o ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o ft_lstlen.o ft_lstpushback.o ft_abs.o ft_clamp.o ft_min.o ft_max.o ft_fabs.o ft_fclamp.o ft_fmin.o ft_fmax.o ft_strjoin_free.o
+SRC_DIR = .
+OBJ_DIR = obj
+INCLUDES_DIR = .
+BIN_DIR = .
+PRINTF_DIR = ft_printf
 
-FLAGS = -Wall -Wextra -Werror
+SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
+		  ft_isalpha.c ft_isalnum.c ft_isdigit.c ft_isascii.c ft_isprint.c \
+		  ft_putchar_fd.c ft_putchar.c ft_putstr.c ft_putstr_fd.c ft_strlen.c \
+		  ft_memchr.c ft_memcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
+		  ft_strcat.c ft_strncat.c ft_strlcat.c ft_strrchr.c ft_strchr.c \
+		  ft_strstr.c ft_strnstr.c ft_atoi.c ft_strcmp.c ft_strncmp.c \
+		  ft_toupper.c ft_tolower.c ft_memalloc.c ft_memdel.c ft_strnew.c \
+		  ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c \
+		  ft_strmapi.c ft_strnequ.c ft_strequ.c ft_strsub.c ft_strjoin.c \
+		  ft_strtrim.c ft_putendl.c ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c \
+		  ft_strsplit.c ft_itoa.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
+		  ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstlen.c ft_lstpushback.c \
+		  ft_abs.c get_next_line.c ft_strjoin_free.c ft_min.c ft_max.c \
+		  ft_fmin.c ft_fmax.c ft_count.c ft_fabs.c ft_atoi_base.c
 
-all: $(NAME)
+HEADERS = 
 
-$(NAME): 
-	gcc $(FLAGS) -c $(SRC)
-	ar r $(NAME) $(OBJ)
-	ranlib $(NAME)
+PRINTF_SRC_RAW = ft_printf.c ft_dprintf.c base_utils.c parse_colors.c \
+				 parse_flags.c parse_functions.c pf_atoi.c pf_float_padding.c \
+				 pf_invalid.c pf_putaddr.c pf_putchar.c pf_putfloat.c \
+				 pf_putlong_base.c pf_putnbr.c pf_putnbr_base.c \
+				 pf_putpercent.c pf_putstr.c pf_putunbr.c pf_strnequ.c \
+				 put_padding.c putfloat_utils.c
 
-main:
-	gcc $(FLAGS) main.c $(SRC)
+PRINTF_HEADERS = ft_printf.h base_utils.h color.h put_padding.h
 
-clean:
-	rm -Rf $(OBJ)
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_RAW))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_RAW:.c=.o))
+INCLUDES = $(addprefix $(INCLUDES_DIR)/, $(HEADERS))
+
+PRINTF_SRC = $(addprefix $(PRINTF_DIR)/, $(PRINTF_SRC_RAW))
+PRINTF_OBJ = $(addprefix $(OBJ_DIR)/, $(PRINTF_SRC_RAW:.c=.o))
+
+CFLAGS = -O3 -Wall -Wextra -Werror -I $(INCLUDES_DIR) -I $(PRINTF_DIR) 
+
+RED := "\033[0;31m"
+GREEN := "\033[0;32m"
+CYAN := "\033[0;36m"
+RESET :="\033[0m"
+
+all: $(BIN_DIR)/$(NAME)
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES) $(MAKEFILE)
+	@gcc -c $< -o $@ $(CFLAGS) 
+
+$(OBJ_DIR)/%.o: $(PRINTF_DIR)/%.c $(PRINTF_DIR) $(MAKEFILE)
+	@gcc -c $< -o $@ $(CFLAGS) 
+
+$(BIN_DIR)/$(NAME): $(OBJ_DIR) $(OBJ) $(PRINTF_OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo ${GREEN}"[INFO] Compiled '$(NAME)' with success"${RESET}
+
+clean: 
+	@rm -f $(OBJ)
+	@rm -Rf $(OBJ_DIR)
+	@echo ${CYAN}"[INFO] Removed objs from the libft"${RESET}
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -Rf $(NAME)
+	@echo ${CYAN}"[INFO] Removed $(NAME) from the libft"${RESET}
 
 re: fclean all
+
+.PHONY: fclean all clean libft

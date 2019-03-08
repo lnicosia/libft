@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 15:49:01 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/22 14:38:08 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/12/12 17:08:49 by lnicosia          #+#    #+#             */
+/*   Updated: 2018/12/12 17:09:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
+int		ft_count(int nb)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	if (c == '\0')
+	while (nb != 0)
 	{
-		while (s[i])
-			i++;
-		return ((char*)s + i);
-	}
-	while (s[i])
-	{
-		if (c == s[i])
-			return ((char*)s + i);
+		nb = nb / 10;
 		i++;
 	}
-	return (0);
+	return (i);
 }

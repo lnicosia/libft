@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 15:49:01 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/22 14:38:08 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/12/14 14:15:45 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/22 14:23:02 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef COLOR_H
+# define COLOR_H
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define MAGENTA "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define RESET "\033[0m"
 
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
-
-	i = 0;
-	if (c == '\0')
-	{
-		while (s[i])
-			i++;
-		return ((char*)s + i);
-	}
-	while (s[i])
-	{
-		if (c == s[i])
-			return ((char*)s + i);
-		i++;
-	}
-	return (0);
-}
+#endif

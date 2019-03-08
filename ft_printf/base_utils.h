@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   base_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 15:49:01 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/22 14:38:08 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/02/22 16:08:03 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/22 16:09:04 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef BASE_UTILS_H
+# define BASE_UTILS_H
 
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
+void			set_spaces_base(t_data *data);
+void			set_zeros_base(t_data *data, unsigned long nb, int base_len);
+unsigned long	cast_base(t_data *data);
 
-	i = 0;
-	if (c == '\0')
-	{
-		while (s[i])
-			i++;
-		return ((char*)s + i);
-	}
-	while (s[i])
-	{
-		if (c == s[i])
-			return ((char*)s + i);
-		i++;
-	}
-	return (0);
-}
+#endif
