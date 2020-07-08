@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_ishexa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:00:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:26:26 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/07 14:24:37 by lnicosia          #+#    #+#             */
+/*   Updated: 2020/02/19 09:54:09 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_ishexa(int c)
 {
-	char	*str;
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	if (!(str = ft_strnew(len)))
-		return (0);
-	while (i < len && s[start + i])
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	return (str);
+	if ((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f')
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	return (0);
 }

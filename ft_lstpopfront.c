@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstpopfront.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:00:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:26:26 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/11/08 17:27:54 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/11/08 17:46:11 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	ft_lstpopfront(t_list **alst)
 {
-	char	*str;
-	size_t	i;
+	t_list	*new;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (!(str = ft_strnew(len)))
-		return (0);
-	while (i < len && s[start + i])
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	return (str);
+	if (!alst)
+		return ;
+	new = (*alst)->next;
+	if ((*alst)->content)
+		free((*alst)->content);
+	free(*alst);
+	*alst = new;
 }

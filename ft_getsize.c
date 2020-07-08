@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_getsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:00:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:26:26 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/07/30 13:19:30 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/07/30 13:31:20 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+size_t	ft_getsize(long nbr)
 {
-	char	*str;
-	size_t	i;
+	size_t	size;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (!(str = ft_strnew(len)))
-		return (0);
-	while (i < len && s[start + i])
+	size = 0;
+	if (nbr <= 0)
+		size++;
+	while (nbr != 0)
 	{
-		str[i] = s[start + i];
-		i++;
+		nbr = nbr / 10;
+		size++;
 	}
-	return (str);
+	return (size);
 }

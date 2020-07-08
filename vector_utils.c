@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   vector_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:00:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:26:26 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/04/19 12:14:56 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/08/22 15:56:05 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+t_point	new_point(int x, int y)
 {
-	char	*str;
-	size_t	i;
+	t_point	new;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (!(str = ft_strnew(len)))
-		return (0);
-	while (i < len && s[start + i])
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	return (str);
+	new.x = x;
+	new.y = y;
+	return (new);
+}
+
+t_v2	new_v2(double x, double y)
+{
+	t_v2	new;
+
+	new.x = x;
+	new.y = y;
+	return (new);
+}
+
+t_v3	new_v3(double x, double y, double z)
+{
+	t_v3	new;
+
+	new.x = x;
+	new.y = y;
+	new.z = z;
+	return (new);
 }

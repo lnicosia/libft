@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_snprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:00:47 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:26:26 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/05/13 10:27:50 by lnicosia          #+#    #+#             */
+/*   Updated: 2020/05/01 18:44:24 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_snprintf(char *restrict str, size_t size,
+const char *restrict format, ...)
 {
-	char	*str;
-	size_t	i;
+	t_data	data;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (!(str = ft_strnew(len)))
-		return (0);
-	while (i < len && s[start + i])
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	return (str);
+	if (!format)
+		return (-1);
+	init_data(&data, 1);
+	data.str = str;
+	data.str_size = size;
+	data.mode = STR;
+	va_start(data.ap, format);
+	parse_format(format, &data);
+	str[data.i] = '\0';
+	va_end(data.ap);
+	return (data.ret);
 }
