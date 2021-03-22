@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 15:33:39 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:27:31 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/08/08 10:53:38 by lnicosia          #+#    #+#             */
+/*   Updated: 2021/01/12 20:54:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strnew(size_t size)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	char	*str;
-	size_t	i;
+	int i;
 
-	if (!(str = malloc(sizeof(*str) * (size + 1))))
-		return (NULL);
+	if (!src)
+		return (0);
 	i = 0;
-	while (i < size + 1)
+	while (src[i])
 	{
-		str[i] = '\0';
+		dst[i] = src[i];
 		i++;
 	}
-	return (str);
+	dst[i] = '\0';
+	return (dst);
 }

@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 15:40:55 by lnicosia          #+#    #+#             */
-/*   Updated: 2018/11/09 15:27:25 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/08 17:12:02 by lnicosia          #+#    #+#             */
+/*   Updated: 2021/01/12 20:55:45 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+char	*ft_strjoin_free(char *s1, const char *s2)
 {
-	if (as == NULL)
-		return ;
-	free(*as);
-	*as = NULL;
+	char	*str;
+
+	if (!s2)
+	{
+		ft_strdel(&s1);
+		return (0);
+	}
+	if (!(str = ft_strnew((ft_strlen(s1) + ft_strlen(s2)))))
+	{
+		ft_strdel(&s1);
+		return (0);
+	}
+	ft_strcpy(str, s1);
+	if (!(ft_strcat(str, s2)))
+		return (0);
+	ft_strdel(&s1);
+	return (str);
 }

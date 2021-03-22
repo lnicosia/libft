@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 17:47:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/07/29 13:57:48 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/08 15:33:39 by lnicosia          #+#    #+#             */
+/*   Updated: 2021/01/12 21:03:49 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-size_t	ft_strlen(const char *str)
+char	*ft_strnew(size_t size)
 {
-	size_t	res;
+	char	*str;
+	size_t	i;
 
-	res = 0;
-	while (*str)
+	if (!(str = (char*)ft_memalloc(sizeof(*str) * (size + 1))))
+		return (NULL);
+	i = 0;
+	while (i < size + 1)
 	{
-		res++;
-		str++;
+		str[i] = '\0';
+		i++;
 	}
-	return (res);
+	return (str);
 }

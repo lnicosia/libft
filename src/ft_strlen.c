@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_utils.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 12:14:56 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/08/22 15:56:05 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/05 17:47:40 by lnicosia          #+#    #+#             */
+/*   Updated: 2021/01/12 20:53:39 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-t_point	new_point(int x, int y)
+size_t	ft_strlen(const char *str)
 {
-	t_point	new;
+	size_t	res;
 
-	new.x = x;
-	new.y = y;
-	return (new);
-}
-
-t_v2	new_v2(double x, double y)
-{
-	t_v2	new;
-
-	new.x = x;
-	new.y = y;
-	return (new);
-}
-
-t_v3	new_v3(double x, double y, double z)
-{
-	t_v3	new;
-
-	new.x = x;
-	new.y = y;
-	new.z = z;
-	return (new);
+	if (!str)
+		return (0);
+	res = 0;
+	while (*str)
+	{
+		res++;
+		str++;
+	}
+	return (res);
 }
