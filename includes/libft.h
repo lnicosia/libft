@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/01/22 13:29:55 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/03/25 14:22:34 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,29 @@
 # include <stdint.h>
 # include "thread_pool.h"
 
+/*
+**	Generic simple list
+*/
+
 typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+/*
+**	Generic doubly linked list
+*/
+
+typedef struct		s_dlist
+{
+	void			*content;
+	size_t			content_size;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}					t_dlist;
+
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -131,5 +148,22 @@ int					valid_int(char *line);
 int					valid_double(char *line);
 int					valid_hexa(char *line);
 char				*ft_rmchar(char *str, char c);
+
+/*
+**	Double linked list functions
+*/
+
+t_dlist				*ft_dlstnew(void const *content, size_t content_size);
+void				ft_dlstpopfront(t_dlist **alst);
+void				ft_dlstdelfront(t_dlist **lst);
+void				ft_dlstadd(t_dlist **lst, t_dlist *new);
+void				ft_dlstreplace(t_dlist **lst, t_dlist *new);
+void				ft_dlstinsert(t_dlist **lst, t_dlist *new,
+int (*compare)(void *, void *));
+void				ft_dlstbackward(t_dlist **lst,
+int (*compare)(void *, void *));
+void				ft_dlstforward(t_dlist **lst,
+int (*compare)(void *, void *));
+size_t				ft_dlstlen(t_dlist *lst);
 
 #endif

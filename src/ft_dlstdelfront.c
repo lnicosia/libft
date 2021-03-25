@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_dlstdelfront.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 17:27:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/24 11:56:19 by lnicosia         ###   ########.fr       */
+/*   Created: 2021/03/25 10:33:21 by lnicosia          #+#    #+#             */
+/*   Updated: 2021/03/25 11:40:09 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_dlstpopfront(t_dlist **alst)
 {
-	size_t		i;
-	char		*str;
-	const char	*source;
+	t_dlist	*new;
 
-	str = dst;
-	source = src;
-	i = 0;
-	while (i < n)
-	{
-		str[i] = source[i];
-		i++;
-	}
-	return (dst);
+	if (!alst)
+		return ;
+	new = (*alst)->next;
+	if ((*alst)->content)
+		free((*alst)->content);
+	free(*alst);
+	*alst = new;
+}
+
+
+void	ft_dlstdelfront(t_dlist **lst)
+{
+	while (*lst && (*lst)->prev)
+		*lst = (*lst)->prev;
+	while (*lst)
+		ft_dlstpopfront(lst);
 }

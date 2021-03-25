@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2021/01/22 13:30:22 by lnicosia         ###   ########.fr        #
+#    Updated: 2021/03/25 14:22:02 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,9 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  ft_lstcontains.c ft_lstpopfront.c ft_lstdelfront.c \
 		  ft_lstdelnode.c ft_convert_base.c ft_ishexa.c thread_pool.c \
 		  thread_pool_work.c init_tpool.c free_tpool.c skip_chars.c \
-		  check_chars.c ft_rmchar.c
+		  check_chars.c ft_rmchar.c ft_dlstnew.c ft_dlstdelfront.c \
+		  ft_dlstinsert.c ft_dlstbackward.c ft_dlstforward.c \
+		  ft_dlstlen.c
 
 HEADERS = libft.h thread_pool.h get_next_line.h
 
@@ -69,7 +71,7 @@ endif
 CFLAGS = -Wall -Wextra -Werror -Wpadded -I $(INCLUDES_DIR) -I $(PRINTF_DIR) \
 			-Wno-unused-result -Wno-misleading-indentation \
 			$(OPTI_FLAGS) \
-			#-fsanitize=address -g3 \
+			-fsanitize=address -g3 \
 
 # Color declarations
 RED := "\e[0;31m"

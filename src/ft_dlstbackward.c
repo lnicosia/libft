@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_dlstbackward.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 17:27:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/24 11:56:19 by lnicosia         ###   ########.fr       */
+/*   Created: 2021/03/25 10:58:36 by lnicosia          #+#    #+#             */
+/*   Updated: 2021/03/25 11:59:35 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t		i;
-	char		*str;
-	const char	*source;
+/*
+**	Go backward into the list until the compare function fails
+*/
 
-	str = dst;
-	source = src;
-	i = 0;
-	while (i < n)
+void	ft_dlstbackward(t_dlist **lst, int (*compare)(void *, void *))
+{
+	if (!compare)
+		return ;
+	while (*lst && (*lst)->prev && compare((*lst)->content, (*lst)->prev->content) > 0)
 	{
-		str[i] = source[i];
-		i++;
+		*lst = (*lst)->prev;
 	}
-	return (dst);
 }

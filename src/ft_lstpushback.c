@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstpushback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:36:19 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/11/12 19:31:17 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/03/23 18:28:15 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstpushback(t_list **alst, t_list *new)
 {
 	t_list	*tmp;
 
-	if (!new || !alst)
+	if (!new)
 		return ;
 	if (!(*alst))
 	{
