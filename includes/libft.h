@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/25 14:22:34 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/03/25 17:25:40 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,12 @@ char				*ft_rmchar(char *str, char c);
 */
 
 t_dlist				*ft_dlstnew(void const *content, size_t content_size);
-void				ft_dlstpopfront(t_dlist **alst);
-void				ft_dlstdelfront(t_dlist **lst);
-void				ft_dlstadd(t_dlist **lst, t_dlist *new);
+void				ft_dlstpopfront(t_dlist **alst,
+void (*del)(void *, size_t));
+void				ft_dlstdelfront(t_dlist **lst,
+void (*del)(void *, size_t));
+void				ft_dlstaddright(t_dlist **lst, t_dlist *new);
+void				ft_dlstaddleft(t_dlist **lst, t_dlist *new);
 void				ft_dlstreplace(t_dlist **lst, t_dlist *new);
 void				ft_dlstinsert(t_dlist **lst, t_dlist *new,
 int (*compare)(void *, void *));
