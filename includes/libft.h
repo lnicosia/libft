@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/25 17:25:40 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/03/25 18:00:42 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ void				ft_dlstaddright(t_dlist **lst, t_dlist *new);
 void				ft_dlstaddleft(t_dlist **lst, t_dlist *new);
 void				ft_dlstreplace(t_dlist **lst, t_dlist *new);
 void				ft_dlstinsert(t_dlist **lst, t_dlist *new,
+int (*compare)(void *, void *));
+void				ft_dlstinsert_reverse(t_dlist **lst, t_dlist *new,
 int (*compare)(void *, void *));
 void				ft_dlstbackward(t_dlist **lst,
 int (*compare)(void *, void *));

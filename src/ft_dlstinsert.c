@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 10:37:43 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/25 17:29:38 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/03/25 18:01:29 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void	ft_dlstreplace(t_dlist **lst, t_dlist *new)
 	}
 	new->prev = *lst;
 	new->next = (*lst)->next;
+	(*lst)->next->prev = new;
 	(*lst)->next = new;
-	*lst = new;
+	//*lst = new;
 }
 
 /*
@@ -121,6 +122,70 @@ void	ft_dlstinsert(t_dlist **lst, t_dlist *new, int (*compare)(void *, void *))
 	else if (type == -1)
 	{
 		if (compare((*lst)->content, new->content) > 0)
+			ft_dlstaddleft(lst, new);
+		else
+			ft_dlstreplace(lst, new);
+			
+	}
+	//ft_printf("Current list:\n");
+	//print_dlist(*lst, 0);
+}
+
+/*
+**	Insert an item in a double linked list by using the given comparison function
+**	but sorted in reverse
+*/
+
+void	ft_dlstinsert_reverse(t_dlist **lst, t_dlist *new,
+int (*compare)(void *, void *))
+{
+	int	type;
+
+	if (!new || !compare)
+		return ;
+	//ft_printf("[Inserting %s]\n", ((t_file*)new->content)->name);
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	type = 0;
+	/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+	((t_file*)(*lst)->content)->name,
+	((t_file*)new->content)->name, compare((*lst)->content, new->content));*/
+	if (compare((*lst)->content, new->content) > 0)
+	{
+		//ft_printf("forward\n");
+		type = 1;
+	}
+	else
+	{
+		//ft_printf("backward\n");
+		type = -1;
+	}
+	while ((*lst)->next && compare((*lst)->content, new->content) > 0)
+	{
+		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+		((t_file*)(*lst)->next->content)->name,
+		((t_file*)new->content)->name, compare((*lst)->content, new->content));
+		ft_printf("next\n");*/
+		*lst = (*lst)->next;
+	}
+	while ((*lst)->prev && compare((*lst)->content, new->content) <= 0)
+	{
+		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+		((t_file*)(*lst)->prev->content)->name,
+		((t_file*)new->content)->name, compare((*lst)->content, new->content));
+		ft_printf("previous\n");*/
+		*lst = (*lst)->prev;
+	}
+	if (type == 1)
+	{
+		ft_dlstaddright(lst, new);
+	}
+	else if (type == -1)
+	{
+		if (compare((*lst)->content, new->content) <= 0)
 			ft_dlstaddleft(lst, new);
 		else
 			ft_dlstreplace(lst, new);
