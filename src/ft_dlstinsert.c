@@ -6,11 +6,12 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 10:37:43 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/26 11:51:09 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/03/31 15:12:10 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../../../includes/ls.h"
 
 /*
 **	Add new after the current node
@@ -38,7 +39,7 @@ void	ft_dlstaddleft(t_dlist **lst, t_dlist *new)
 {
 	if (!new)
 		return ;
-		if (!(*lst))
+	if (!(*lst))
 	{
 		*lst = new;
 		return ;
@@ -52,11 +53,11 @@ void	ft_dlstaddleft(t_dlist **lst, t_dlist *new)
 **	Replace the current node
 */
 
-void	ft_dlstreplace(t_dlist **lst, t_dlist *new)
+void	ft_dlstreplaceleft(t_dlist **lst, t_dlist *new)
 {
 	if (!new)
 		return ;
-		if (!(*lst))
+	if (!(*lst))
 	{
 		*lst = new;
 		return ;
@@ -65,7 +66,25 @@ void	ft_dlstreplace(t_dlist **lst, t_dlist *new)
 	new->next = (*lst)->next;
 	(*lst)->next->prev = new;
 	(*lst)->next = new;
-	//*lst = new;
+}
+
+/*
+**	Replace the current node
+*/
+
+void	ft_dlstreplaceright(t_dlist **lst, t_dlist *new)
+{
+	if (!new)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	new->next = *lst;
+	new->prev = (*lst)->prev;
+	(*lst)->prev->next = new;
+	(*lst)->prev = new;
 }
 
 /*
@@ -98,36 +117,52 @@ void	ft_dlstinsert(t_dlist **lst, t_dlist *new, int (*compare)(void *, void *))
 		//ft_printf("backward\n");
 		type = -1;
 	}
-	while ((*lst)->next && compare((*lst)->content, new->content) <= 0)
+	while (type == 1
+		&& (*lst)->next && compare((*lst)->content, new->content) <= 0)
 	{
 		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
-		((t_file*)(*lst)->next->content)->name,
+		((t_file*)(*lst)->content)->name,
 		((t_file*)new->content)->name, compare((*lst)->content, new->content));
 		ft_printf("next\n");*/
 		*lst = (*lst)->next;
 	}
-	while ((*lst)->prev && compare((*lst)->content, new->content) > 0)
+	while (type == -1
+		&& (*lst)->prev && compare((*lst)->content, new->content) > 0)
 	{
 		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
-		((t_file*)(*lst)->prev->content)->name,
+		((t_file*)(*lst)->content)->name,
 		((t_file*)new->content)->name, compare((*lst)->content, new->content));
 		ft_printf("previous\n");*/
 		*lst = (*lst)->prev;
 	}
 	if (type == 1)
 	{
-		ft_dlstaddright(lst, new);
+		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+		((t_file*)(*lst)->content)->name,
+		((t_file*)new->content)->name, compare((*lst)->content, new->content));*/
+		if (compare((*lst)->content, new->content) <= 0)
+		{
+			//ft_printf("Add right\n");
+			ft_dlstaddright(lst, new);
+		}
+		else
+		{
+			//ft_printf("Replace right\n");
+			ft_dlstreplaceright(lst, new);
+		}
 	}
 	else if (type == -1)
 	{
 		if (compare((*lst)->content, new->content) > 0)
 			ft_dlstaddleft(lst, new);
 		else
-			ft_dlstreplace(lst, new);
+			ft_dlstreplaceleft(lst, new);
 			
 	}
-	//ft_printf("Current list:\n");
-	//print_dlist(*lst, 0);
+	/*ft_printf("Current list:\n");
+	print_dlist(*lst, 0);
+	ft_printf("Current list (reverse):\n");
+	print_dlist_reverse(*lst, 0);*/
 }
 
 /*
@@ -162,7 +197,8 @@ int (*compare)(void *, void *))
 		//ft_printf("backward\n");
 		type = -1;
 	}
-	while ((*lst)->next && compare((*lst)->content, new->content) > 0)
+	while (type == 1
+		&& (*lst)->next && compare((*lst)->content, new->content) > 0)
 	{
 		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
 		((t_file*)(*lst)->next->content)->name,
@@ -170,7 +206,8 @@ int (*compare)(void *, void *))
 		ft_printf("next\n");*/
 		*lst = (*lst)->next;
 	}
-	while ((*lst)->prev && compare((*lst)->content, new->content) <= 0)
+	while (type == -1
+		&& (*lst)->prev && compare((*lst)->content, new->content) <= 0)
 	{
 		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
 		((t_file*)(*lst)->prev->content)->name,
@@ -180,14 +217,26 @@ int (*compare)(void *, void *))
 	}
 	if (type == 1)
 	{
-		ft_dlstaddright(lst, new);
+		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+		((t_file*)(*lst)->content)->name,
+		((t_file*)new->content)->name, compare((*lst)->content, new->content));*/
+		if (compare((*lst)->content, new->content) <= 0)
+		{
+			//ft_printf("Add right\n");
+			ft_dlstaddright(lst, new);
+		}
+		else
+		{
+			//ft_printf("Replace right\n");
+			ft_dlstreplaceright(lst, new);
+		}
 	}
 	else if (type == -1)
 	{
 		if (compare((*lst)->content, new->content) <= 0)
 			ft_dlstaddleft(lst, new);
 		else
-			ft_dlstreplace(lst, new);
+			ft_dlstreplaceleft(lst, new);
 			
 	}
 	//ft_printf("Current list:\n");
