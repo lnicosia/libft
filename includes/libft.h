@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/03/29 11:40:29 by lnicosia         ###   ########.fr       */
+/*   Updated: 2021/04/08 12:02:05 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ typedef struct		s_dlist
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }					t_dlist;
+
+/*
+**	Flag options for print_bits
+*/
+
+# define P_FLOAT	(1 << 0)
+# define P_INT		(1 << 1)
+# define P_CHAR		(1 << 2)
 
 
 void				ft_putchar(char c);
@@ -149,6 +157,7 @@ int					valid_int(char *line);
 int					valid_double(char *line);
 int					valid_hexa(char *line);
 char				*ft_rmchar(char *str, char c);
+void				print_bits(void *ptr, size_t size, int flag);
 
 /*
 **	Double linked list functions
