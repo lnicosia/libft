@@ -156,7 +156,7 @@ void	ft_dlstinsert(t_dlist **lst, t_dlist *new, int (*compare)(void *, void *))
 			ft_dlstaddleft(lst, new);
 		else
 			ft_dlstreplaceleft(lst, new);
-			
+
 	}
 	/*ft_printf("Current list:\n");
 	print_dlist(*lst, 0);
@@ -219,7 +219,7 @@ int (*compare)(void *, void *))
 		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
 		((t_file*)(*lst)->content)->name,
 		((t_file*)new->content)->name, compare((*lst)->content, new->content));*/
-		if (compare((*lst)->content, new->content) <= 0)
+		if (compare((*lst)->content, new->content) > 0)
 		{
 			//ft_printf("Add right\n");
 			ft_dlstaddright(lst, new);
@@ -236,7 +236,7 @@ int (*compare)(void *, void *))
 			ft_dlstaddleft(lst, new);
 		else
 			ft_dlstreplaceleft(lst, new);
-			
+
 	}
 	//ft_printf("Current list:\n");
 	//print_dlist(*lst, 0);
