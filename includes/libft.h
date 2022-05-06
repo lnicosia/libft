@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2022/05/05 12:54:46 by lnicosia         ###   ########.fr       */
+/*   Updated: 2022/05/06 14:35:07 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,8 @@ int					valid_hexa(char *line);
 char				*ft_rmchar(char *str, char c);
 void				print_bits(void *ptr, size_t size, int flag);
 int				ft_strbegin(char const *s1, char const *s2);
+double				ft_ceil(double nb);
+double				ft_centiceil(double nb);
 
 /*
 **	Double linked list functions
