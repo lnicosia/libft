@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:01:13 by lnicosia          #+#    #+#             */
-/*   Updated: 2022/05/06 14:35:07 by lnicosia         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:02:49 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,9 @@ void				print_bits(void *ptr, size_t size, int flag);
 int				ft_strbegin(char const *s1, char const *s2);
 double				ft_ceil(double nb);
 double				ft_centiceil(double nb);
+int					is_a_special_char(char c);
+int					contains_special_chars(char* str);
+char*				replace_char(char* str, char find, char* replace);
 
 /*
 **	Double linked list functions

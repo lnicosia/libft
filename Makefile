@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2022/05/06 14:35:32 by lnicosia         ###   ########.fr        #
+#    Updated: 2022/05/10 11:53:21 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  check_chars.c ft_rmchar.c ft_dlstnew.c ft_dlstdelfront.c \
 		  ft_dlstinsert.c ft_dlstbackward.c ft_dlstforward.c \
 		  ft_dlstlen.c ft_stricmp.c print_bits.c ft_strbegin.c \
-		  ft_ceil.c ft_centiceil.c \
+		  ft_ceil.c ft_centiceil.c is_a_special_char.c replace_char.c \
+		  contains_special_chars.c \
 
 HEADERS = libft.h thread_pool.h get_next_line.h
 

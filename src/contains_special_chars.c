@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   contains_special_chars.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 10:53:38 by lnicosia          #+#    #+#             */
-/*   Updated: 2022/05/10 14:23:57 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/07/15 20:54:27 by lnicosia          #+#    #+#             */
+/*   Updated: 2022/05/10 11:29:48 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	int i;
+#include "libft.h"
 
-	if (!src)
-		return (0);
+int	contains_special_chars(char* str)
+{
+	size_t	i;
+	int		ret;
+
 	i = 0;
-	while (src[i])
+	while (str[i])
 	{
-		dst[i] = src[i];
+		if ((ret = is_a_special_char(str[i])) != 0)
+			return (ret);
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (0);
 }
