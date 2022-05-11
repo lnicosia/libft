@@ -42,7 +42,7 @@ void	put_colors_4(const char *s, int *i, t_data *data)
 	}
 	else if (pf_strnequ(s + *i, "{bblack}", 8) == 1)
 	{
-		fill_buffer(data, BMAGENTA, 5);
+		fill_buffer(data, BBLACK, 5);
 		(*i) += 7;
 	}
 }

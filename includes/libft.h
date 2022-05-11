@@ -164,6 +164,7 @@ double				ft_centiceil(double nb);
 int					is_a_special_char(char c);
 int					contains_special_chars(char* str);
 char*				replace_char(char* str, char find, char* replace);
+void*				ft_dlist_to_array(t_dlist* lst);
 
 /*
 **	Double linked list functions

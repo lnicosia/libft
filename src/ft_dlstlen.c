@@ -17,6 +17,8 @@ size_t	ft_dlstlen(t_dlist *lst)
 	size_t	len;
 
 	len = 0;
+	if (lst)
+		len = 1;
 	while (lst && lst->prev)
 		lst = lst->prev;
 	while (lst && lst->next)
