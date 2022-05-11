@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:15:45 by lnicosia          #+#    #+#             */
-/*   Updated: 2022/05/09 14:58:07 by lnicosia         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:52:15 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define COLOR_H
 
 # define RESET		"\033[0m"
+# define BOLD		"\033[1m"
+# define UNDERLINE	"\033[4m"
+# define BLINK		"\033[5m"
+# define INVERT		"\033[7m"
+# define CONCEALED	"\033[8m"
 
 # define BLACK		"\033[30m"
 # define RED		"\033[31m"
@@ -22,6 +27,7 @@
 # define BLUE		"\033[34m"
 # define MAGENTA	"\033[35m"
 # define CYAN		"\033[36m"
+# define WHITE		"\033[37m"
 
 # define BBLACK		"\033[40m"
 # define BRED		"\033[41m"
@@ -30,9 +36,6 @@
 # define BBLUE		"\033[44m"
 # define BMAGENTA	"\033[45m"
 # define BCYAN		"\033[46m"
-
-# define BOLD		"\033[1m"
-# define INVERT		"\033[7m"
-# define UNDERLINE	"\033[4m"
+# define BWHITE		"\033[47m"
 
 #endif

@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2022/05/11 14:19:59 by lnicosia         ###   ########.fr        #
+#    Updated: 2022/05/11 16:00:29 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
 
 $(OBJ_DIR)/%.o: $(PRINTF_DIR)/%.c $(PRINTF_DIR)
 	@printf $(YELLOW)"\e[0;33mCompiling $<\n"$(RESET)
-	@gcc -c $< -o $@ $(CFLAGS)
+	gcc -c $< -o $@ $(CFLAGS)
 
 $(BIN_DIR)/$(NAME): $(OBJ_DIR) $(OBJ) $(PRINTF_OBJ)
 	@printf "\e[0;36m[INFO] Linking ${NAME}\e[0m\n"
