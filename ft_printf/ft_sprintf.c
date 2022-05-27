@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_snprintf.c                                      :+:      :+:    :+:   */
+/*   ft_sprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,8 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_snprintf(char *restrict str, size_t size,
-const char *restrict format, ...)
+int		ft_sprintf(char *restrict str, const char *restrict format, ...)
 {
 	t_data	data;
 
@@ -21,8 +20,7 @@ const char *restrict format, ...)
 		return (-1);
 	init_data(&data, 1);
 	data.str = str;
-	data.str_size = size;
-	data.mode = STR_SIZE;
+	data.mode = STR;
 	va_start(data.ap, format);
 	parse_format(format, &data);
 	str[data.i] = '\0';

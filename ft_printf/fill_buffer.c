@@ -12,12 +12,25 @@
 
 #include "ft_printf.h"
 
-void		fill_str(t_data *data, const char *s, unsigned int size)
+void		fill_str_size(t_data *data, const char *s, unsigned int size)
 {
 	unsigned int	i;
 
 	i = 0;
 	while (i < size && data->i < (int)data->str_size - 1)
+	{
+		data->str[data->i] = s[i];
+		i++;
+		data->i++;
+	}
+}
+
+void		fill_str(t_data *data, const char *s, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < size)
 	{
 		data->str[data->i] = s[i];
 		i++;
@@ -56,6 +69,8 @@ void		fill_buffer(t_data *data, const char *s, unsigned int size)
 		data->ret = -1;
 	if (data->mode == STDOUT)
 		fill_output_buffer(data, s, size);
+	else if (data->mode == STR_SIZE)
+		fill_str_size(data, s, size);
 	else if (data->mode == STR)
 		fill_str(data, s, size);
 }
