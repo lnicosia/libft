@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdint.h>
+# include <stdarg.h>
 # include "thread_pool.h"
 
 /*
@@ -137,8 +138,17 @@ int					ft_count(int nb);
 long				ft_atoi_base(char *str, char *base);
 int					ft_dprintf(int fd, const char *restrict format, ...);
 int					ft_printf(const char *restrict format, ...);
+int					ft_noprintf(const char *restrict format, ...);
+int					ft_vprintf(const char *restrict format, va_list ap);
+int					ft_novprintf(const char *restrict format, va_list ap);
+int					ft_sprintf(char *restrict str,
+const char *restrict format, ...);
+int					ft_vsprintf(char *restrict str,
+const char *restrict format, va_list ap);
 int					ft_snprintf(char *restrict str, size_t size,
 const char *restrict format, ...);
+int					ft_vsnprintf(char *restrict str, size_t size,
+const char *restrict format, va_list ap);
 size_t				ft_getlen(long nb);
 size_t				ft_getsize(long nb);
 void				*ft_realloc(void *ptr, size_t old_size, size_t new_size);
