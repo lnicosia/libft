@@ -6,7 +6,7 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:05:31 by lnicosia          #+#    #+#             */
-/*   Updated: 2021/01/22 13:40:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:09:11 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ int		get_next_line(const int fd, char **line)
 	while (!ft_strchr(curr->str, NEWLINE) && (ret = read(fd, buff, BUFF_SIZE))
 		&& !contains_zero(buff, ret))
 	{
-		buff[ret] = '\0';
 		if (ret < 0 || !(curr->str = ft_strjoin_free(curr->str, buff)))
 			return (-1);
+		buff[ret] = '\0';
 	}
 	return (set_data(&datas, line, curr, new));
 }
