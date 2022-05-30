@@ -138,6 +138,7 @@ int					ft_count(int nb);
 long				ft_atoi_base(char *str, char *base);
 int					ft_dprintf(int fd, const char *restrict format, ...);
 int					ft_printf(const char *restrict format, ...);
+int					ft_bprintf(int force_flush, const char *restrict format, ...);
 int					ft_noprintf(const char *restrict format, ...);
 int					ft_vprintf(const char *restrict format, va_list ap);
 int					ft_novprintf(const char *restrict format, va_list ap);

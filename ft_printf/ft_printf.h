@@ -57,6 +57,7 @@ typedef struct		s_data
 }					t_data;
 
 int					ft_printf(const char *restrict format, ...);
+int					ft_bprintf(int force_flush, const char *restrict format, ...);
 int					ft_noprintf(const char *restrict format, ...);
 int					ft_vprintf(const char *restrict format, va_list ap);
 int					ft_dprintf(int fd, const char *restrict format, ...);
