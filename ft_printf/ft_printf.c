@@ -60,7 +60,6 @@ void		init_data(t_data *data, int fd)
 	data->ret = 0;
 	data->mode = STDOUT;
 	data->fd = fd;
-	write(fd, "Bonjour\n", 8);
 	while (++i < BUFF_SIZE)
 		data->buffer[i] = '\0';
 	reset_options(data);

@@ -20,7 +20,6 @@ int			ft_bprintf(int force_flush, const char *restrict format, ...)
 
 	if (first_call == 1)
 	{
-		write(1, "First call\n", 11);
 		init_data(&data, 1);
 		first_call = 0;
 	}
