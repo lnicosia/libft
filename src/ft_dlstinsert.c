@@ -116,23 +116,28 @@ void	ft_dlstinsert(t_dlist **lst, t_dlist *new, int (*compare)(void *, void *))
 		//ft_printf("backward\n");
 		type = -1;
 	}
-	while (type == 1
-		&& (*lst)->next && compare((*lst)->content, new->content) <= 0)
+	if (type == 1)
 	{
-		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
-		((t_file*)(*lst)->content)->name,
-		((t_file*)new->content)->name, compare((*lst)->content, new->content));
-		ft_printf("next\n");*/
-		*lst = (*lst)->next;
+		while ((*lst)->next && compare((*lst)->content, new->content) <= 0)
+		{
+			/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+			((t_file*)(*lst)->content)->name,
+			((t_file*)new->content)->name, compare((*lst)->content, new->content));
+			ft_printf("next\n");*/
+			*lst = (*lst)->next;
+		}
 	}
-	while (type == -1
-		&& (*lst)->prev && compare((*lst)->content, new->content) > 0)
+	if (type == -1)
 	{
-		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
-		((t_file*)(*lst)->content)->name,
-		((t_file*)new->content)->name, compare((*lst)->content, new->content));
-		ft_printf("previous\n");*/
-		*lst = (*lst)->prev;
+
+		while ((*lst)->prev && compare((*lst)->content, new->content) > 0)
+		{
+			/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+			((t_file*)(*lst)->content)->name,
+			((t_file*)new->content)->name, compare((*lst)->content, new->content));
+			ft_printf("previous\n");*/
+			*lst = (*lst)->prev;
+		}
 	}
 	if (type == 1)
 	{
@@ -196,23 +201,27 @@ int (*compare)(void *, void *))
 		//ft_printf("backward\n");
 		type = -1;
 	}
-	while (type == 1
-		&& (*lst)->next && compare((*lst)->content, new->content) > 0)
+	if (type == 1)
 	{
-		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
-		((t_file*)(*lst)->next->content)->name,
-		((t_file*)new->content)->name, compare((*lst)->content, new->content));
-		ft_printf("next\n");*/
-		*lst = (*lst)->next;
+		while ((*lst)->next && compare((*lst)->content, new->content) > 0)
+		{
+			/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+			((t_file*)(*lst)->next->content)->name,
+			((t_file*)new->content)->name, compare((*lst)->content, new->content));
+			ft_printf("next\n");*/
+			*lst = (*lst)->next;
+		}
 	}
-	while (type == -1
-		&& (*lst)->prev && compare((*lst)->content, new->content) <= 0)
+	if (type == -1)
 	{
-		/*ft_printf("Comparison between |%s| and |%s| = %d\n",
-		((t_file*)(*lst)->prev->content)->name,
-		((t_file*)new->content)->name, compare((*lst)->content, new->content));
-		ft_printf("previous\n");*/
-		*lst = (*lst)->prev;
+		while ((*lst)->prev && compare((*lst)->content, new->content) <= 0)
+		{
+			/*ft_printf("Comparison between |%s| and |%s| = %d\n",
+			((t_file*)(*lst)->prev->content)->name,
+			((t_file*)new->content)->name, compare((*lst)->content, new->content));
+			ft_printf("previous\n");*/
+			*lst = (*lst)->prev;
+		}
 	}
 	if (type == 1)
 	{
