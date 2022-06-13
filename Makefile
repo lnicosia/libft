@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2022/06/13 09:50:41 by lnicosia         ###   ########.fr        #
+#    Updated: 2022/06/13 10:01:49 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,18 +102,18 @@ $(PRINTF_OBJ_DIR):
 	@mkdir -p $(PRINTF_OBJ_DIR)
 
 I = 1
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES) $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
 	@printf $(YELLOW)"[$(I)/$(SRC_SIZE)] Compiling $<\n"$(RESET)
 	$(eval I=$(shell echo $$(($(I) + 1))))
 	gcc -c $< -o $@ $(CFLAGS)
 
 PI = 1
-$(PRINTF_OBJ_DIR)/%.o: $(PRINTF_SRC_DIR)/%.c $(PRINTF_OBJ_DIR)
+$(PRINTF_OBJ_DIR)/%.o: $(PRINTF_SRC_DIR)/%.c
 	@printf $(YELLOW)"[$(PI)/$(PRINTF_SRC_SIZE)] Compiling $<\n"$(RESET)
 	$(eval PI=$(shell echo $$(($(PI) + 1))))
 	gcc -c $< -o $@ $(CFLAGS)
 
-$(BIN_DIR)/$(NAME): $(OBJ) $(PRINTF_OBJ)
+$(BIN_DIR)/$(NAME): $(OBJ_DIR) $(OBJ) $(PRINTF_OBJ_DIR) $(PRINTF_OBJ)
 	@printf "\e[0;36m[INFO] Linking ${NAME}\e[0m\n"
 	ar rc $(NAME) $(OBJ) $(PRINTF_OBJ)
 	ranlib $(NAME)
