@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2022/05/30 11:30:04 by lnicosia         ###   ########.fr        #
+#    Updated: 2022/06/13 09:46:20 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,9 @@ OBJ_DIR = obj
 INCLUDES_DIR = includes
 BIN_DIR = .
 PRINTF_DIR = ft_printf
+PRINTF_SRC_DIR = $(addprefix $(PRINTF_DIR)/, src)
+PRINTF_INC_DIR = $(addprefix $(PRINTF_DIR)/, inc)
+PRINTF_OBJ_DIR = $(addprefix $(PRINTF_DIR)/, obj)
 OPTI_FLAGS = -O3
 
 SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
@@ -45,6 +48,8 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  contains_special_chars.c ft_dlist_to_array.c \
 		  reverse_bits.c reverse_endian.c \
 
+SRC_SIZE = $(shell ls src | wc -l)
+
 HEADERS = libft.h thread_pool.h get_next_line.h
 
 PRINTF_SRC_RAW = ft_printf.c ft_dprintf.c base_utils.c parse_colors.c \
@@ -57,6 +62,7 @@ PRINTF_SRC_RAW = ft_printf.c ft_dprintf.c base_utils.c parse_colors.c \
 				 ft_noprintf.c ft_novprintf.c ft_sprintf.c ft_vsprintf.c \
 				 ft_bprintf.c \
 
+PRINTF_SRC_SIZE = $(shell ls ft_printf/src | wc -l)
 
 PRINTF_HEADERS = ft_printf.h base_utils.h color.h put_padding.h
 
@@ -64,8 +70,8 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_RAW:.c=.o))
 INCLUDES = $(addprefix $(INCLUDES_DIR)/, $(HEADERS))
 
-PRINTF_SRC = $(addprefix $(PRINTF_DIR)/, $(PRINTF_SRC_RAW))
-PRINTF_OBJ = $(addprefix $(OBJ_DIR)/, $(PRINTF_SRC_RAW:.c=.o))
+PRINTF_SRC = $(addprefix $(PRINTF_SRC_DIR)/, $(PRINTF_SRC_RAW))
+PRINTF_OBJ = $(addprefix $(PRINTF_OBJ_DIR)/, $(PRINTF_SRC_RAW:.c=.o))
 
 ifeq ($(OS), Windows_NT)
 	OPTI_FLAGS = -O3
@@ -73,7 +79,7 @@ else
     OPTI_FLAGS = -O3 -flto
 endif
 
-CFLAGS = -Wall -Wextra -Werror -Wpadded -I $(INCLUDES_DIR) -I $(PRINTF_DIR) \
+CFLAGS = -Wall -Wextra -Werror -Wpadded -I $(INCLUDES_DIR) -I $(PRINTF_INC_DIR) \
 			-Wno-unused-result -Wno-misleading-indentation \
 			$(OPTI_FLAGS) \
 			#-fsanitize=address -g3 \
@@ -92,17 +98,24 @@ all: $(BIN_DIR)/$(NAME)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
-	@printf $(YELLOW)"\e[0;33mCompiling $<\n"$(RESET)
+$(PRINTF_OBJ_DIR):
+	@mkdir -p $(PRINTF_OBJ_DIR)
+
+I = 1
+$(OBJ): $(SRC) $(INCLUDES) $(OBJ_DIR)
+	@printf $(YELLOW)"[$(I)/$(SRC_SIZE)] Compiling $<\n"$(RESET)
+	$(eval I=$(shell echo $$(($(I) + 1))))
 	gcc -c $< -o $@ $(CFLAGS)
 
-$(OBJ_DIR)/%.o: $(PRINTF_DIR)/%.c $(PRINTF_DIR)
-	@printf $(YELLOW)"\e[0;33mCompiling $<\n"$(RESET)
+PI = 1
+$(PRINTF_OBJ): $(PRINTF_SRC) $(PRINTF_OBJ_DIR)
+	@printf $(YELLOW)"[$(PI)/$(PRINTF_SRC_SIZE)] Compiling $<\n"$(RESET)
+	$(eval PI=$(shell echo $$(($(PI) + 1))))
 	gcc -c $< -o $@ $(CFLAGS)
 
-$(BIN_DIR)/$(NAME): $(OBJ_DIR) $(OBJ) $(PRINTF_OBJ)
+$(BIN_DIR)/$(NAME): $(OBJ) $(PRINTF_OBJ)
 	@printf "\e[0;36m[INFO] Linking ${NAME}\e[0m\n"
-	ar rc $(NAME) $(OBJ) $(PRINTF_OBJ) $(BMP_PARSER_OBJ)
+	ar rc $(NAME) $(OBJ) $(PRINTF_OBJ)
 	ranlib $(NAME)
 	@printf ${GREEN}"[INFO] Linked $(NAME) with success\n"${RESET}
 
