@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2022/06/13 09:46:20 by lnicosia         ###   ########.fr        #
+#    Updated: 2022/06/13 09:50:41 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,13 +102,13 @@ $(PRINTF_OBJ_DIR):
 	@mkdir -p $(PRINTF_OBJ_DIR)
 
 I = 1
-$(OBJ): $(SRC) $(INCLUDES) $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES) $(OBJ_DIR)
 	@printf $(YELLOW)"[$(I)/$(SRC_SIZE)] Compiling $<\n"$(RESET)
 	$(eval I=$(shell echo $$(($(I) + 1))))
 	gcc -c $< -o $@ $(CFLAGS)
 
 PI = 1
-$(PRINTF_OBJ): $(PRINTF_SRC) $(PRINTF_OBJ_DIR)
+$(PRINTF_OBJ_DIR)/%.o: $(PRINTF_SRC_DIR)/%.c $(PRINTF_OBJ_DIR)
 	@printf $(YELLOW)"[$(PI)/$(PRINTF_SRC_SIZE)] Compiling $<\n"$(RESET)
 	$(eval PI=$(shell echo $$(($(PI) + 1))))
 	gcc -c $< -o $@ $(CFLAGS)
