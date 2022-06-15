@@ -6,7 +6,7 @@
 #    By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2022/06/13 10:01:49 by lnicosia         ###   ########.fr        #
+#    Updated: 2022/06/15 11:53:47 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  ft_dlstlen.c ft_stricmp.c print_bits.c ft_strbegin.c \
 		  ft_ceil.c ft_centiceil.c is_a_special_char.c replace_char.c \
 		  contains_special_chars.c ft_dlist_to_array.c \
-		  reverse_bits.c reverse_endian.c \
+		  reverse_bits.c reverse_endian.c ft_labs.c \
 
 SRC_SIZE = $(shell ls src | wc -l)
 
