@@ -1,5 +1,9 @@
 #include "libft.h"
 
+/*
+**	Check if the character belongs to the option string
+*/
+
 static int	check_short_opt(char c, const char *optstring, int *requires_arg)
 {
 	size_t	i = 0;
@@ -8,6 +12,7 @@ static int	check_short_opt(char c, const char *optstring, int *requires_arg)
 	{
 		if (optstring[i] != ':' && c == optstring[i])
 		{
+			//	Option that requires an argument
 			if (optstring[i + 1] == ':')
 				*requires_arg = 1;
 			return c;
@@ -18,15 +23,21 @@ static int	check_short_opt(char c, const char *optstring, int *requires_arg)
 	return '?';
 }
 
+/*
+**	Run through the option line 
+*/
+
 static int	parse_option_line(char * const argv[], const char *optstring,
 	char **optarg, int optindex, int nextchar)
 {
 	int	ret;
 	int	requires_arg = 0;
 
+	//	Long option (starting with '--')
 	if (ft_strbegin(argv[optindex], "--"))
 	{
 	}
+	//	Short option (starting with '-')
 	else
 	{
 		ret = check_short_opt(argv[optindex][nextchar], optstring, &requires_arg);
@@ -57,13 +68,13 @@ int		ft_getopt_long(int argc, char * const argv[],
 {
 	(void)longopts;
 	(void)longindex;
-	(void)optarg;
 	int	ret;
 	static int	optindex = 1;
 	static int	nextchar = 1;
 
 	//ft_printf("Optindex = %d\n", optindex);
 	//ft_printf("Next char = %d\n", nextchar);
+	*optarg = NULL;
 	if (optindex == argc)
 		return -1;
 	//ft_printf("next char will be '%c'\n", argv[optindex][nextchar]);
@@ -81,7 +92,7 @@ int		ft_getopt_long(int argc, char * const argv[],
 			{
 				//	Finished parsing the current '-' options
 				//	-> check next args
-				if (argv[optindex][nextchar + 1] == 0)
+				if (argv[optindex][nextchar + 1] == 0 || *optarg != NULL)
 				{
 					optindex++;
 					nextchar = 1;
