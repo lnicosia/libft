@@ -207,7 +207,7 @@ static int	parse_option_line(char * const argv[], const char *optstring,
 
 static inline int	is_arg_an_option_line(char *argv)
 {
-	return (ft_strlen(argv) > 1 && argv[0] == '-');
+	return (ft_strlen(argv) > 1 && argv[0] == '-' && argv[1] != '-');
 }
 
 int		ft_getopt_long(int argc, char * const argv[],
