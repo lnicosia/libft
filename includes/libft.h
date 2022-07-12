@@ -18,6 +18,7 @@
 # include <string.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <getopt.h>
 # include "thread_pool.h"
 
 /*
@@ -201,5 +202,18 @@ int (*compare)(void *, void *));
 void				ft_dlstforward(t_dlist **lst,
 int (*compare)(void *, void *));
 size_t				ft_dlstlen(t_dlist *lst);
+
+/*
+**	getopt
+*/
+
+int					ft_getopt(int argc, char * const argv[],
+								const char *optstring, char **optarg);
+int					ft_getopt_long(int argc, char * const argv[],
+									const char *optstring, char **optarg,
+									const struct option *longopts, int *longindex);
+int					ft_getopt_long_only(int argc, char * const argv[],
+									const char *optstring, char **optarg,
+									const struct option *longopts, int *longindex);
 
 #endif
