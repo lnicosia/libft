@@ -27,3 +27,23 @@ int		ft_strbegin(char const *s1, char const *s2)
 		return (0);
 	return (1);
 }
+
+int		ft_optbegin(char const *s1, char const *s2)
+{
+	if (!s1 || !s2)
+		return (0);
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+		{
+			if (*s2 == '=')
+				return (1);
+			return (0);
+		}
+		s1++;
+		s2++;
+	}
+	if (*s2)
+		return (0);
+	return (1);
+}
