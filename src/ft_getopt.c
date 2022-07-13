@@ -1,6 +1,67 @@
 #include "libft.h"
 
 /*
+**	When arg is the beggining of multiple possible long opts
+*/
+
+static void	print_ambiguous_possibilities(char * const argv[], int optindex,
+	const struct option *longopts)
+{
+	ft_dprintf(STDERR_FILENO, "%s: option '--%s' is ambiguous; possibilities:",
+		argv[0], argv[optindex] + 2);
+	int i = 0;
+	//	Print every possible option starting with this
+	while (1)
+	{
+		struct option current_opt = longopts[i];
+		if (current_opt.name == 0 && current_opt.has_arg == 0
+			&& current_opt.flag == 0 && current_opt.val == 0)
+			break;
+		if (ft_optbegin(current_opt.name, argv[optindex] + 2))
+			ft_dprintf(STDERR_FILENO, " '--%s'", current_opt.name);
+		i++;
+	}
+	ft_dprintf(STDERR_FILENO, "\n");
+}
+
+/*
+**	For long opts, check if an argument is required
+*/
+
+static int	check_required_args(char * const argv[], int optindex, int res_index,
+	const struct option *longopts, int *requires_arg)
+{
+	if (longopts[res_index].has_arg == required_argument)
+	{
+		if (!ft_strchr(argv[optindex], '=') && argv[optindex + 1] == NULL)
+		{
+			ft_dprintf(STDERR_FILENO, "%s: option '--%s' requires an argument\n",
+				argv[0], longopts[res_index].name);
+			return '?';
+		}
+		*requires_arg = 1;
+	}
+	else if (ft_strchr(argv[optindex], '='))
+	{
+		if (longopts[res_index].has_arg == optional_argument)
+			*requires_arg = 1;
+		else if (longopts[res_index].has_arg == no_argument)
+		{
+			ft_dprintf(STDERR_FILENO, "%s: option '--%s' doesn't allow an argument\n",
+				argv[0], longopts[res_index].name);
+			return '?';
+		}
+	}
+	if (longopts[res_index].flag == NULL)
+		return longopts[res_index].val;
+	else
+	{
+		*(longopts[res_index].flag) = longopts[res_index].val;
+		return 0;
+	}
+}
+
+/*
 **	Check long options
 */
 
@@ -38,35 +99,13 @@ static int	check_long_opt(char * const argv[], int optindex,
 	//	More than one match is ambiguous
 	if (nb_matches > 1)
 	{
-		ft_dprintf(STDERR_FILENO, "%s: option '--%s' is ambiguous; possibilities:",
-			argv[0], argv[optindex] + 2);
-		i = 0;
-		//	Print every possible option starting with this
-		while (1)
-		{
-			struct option current_opt = longopts[i];
-			if (current_opt.name == 0 && current_opt.has_arg == 0
-				&& current_opt.flag == 0 && current_opt.val == 0)
-				break;
-			if (ft_strbegin(current_opt.name, argv[optindex] + 2))
-				ft_dprintf(STDERR_FILENO, " '--%s'", current_opt.name);
-			i++;
-		}
-		ft_dprintf(STDERR_FILENO, "\n");
+		print_ambiguous_possibilities(argv, optindex, longopts);
 		return '?';
 	}
 	//	Only one match, we are good
 	else if (nb_matches == 1)
 	{
-		if (longopts[res_index].has_arg == required_argument)
-			*requires_arg = 1;
-		if (longopts[res_index].flag == NULL)
-			return longopts[res_index].val;
-		else
-		{
-			*(longopts[res_index].flag) = longopts[res_index].val;
-			return 0;
-		}
+		return check_required_args(argv, optindex, res_index, longopts, requires_arg);
 	}
 	//	Current option is not valid
 	ft_dprintf(STDERR_FILENO, "%s: unrecognized option '%s'\n",
@@ -102,26 +141,23 @@ static int	check_short_opt(char c, const char *optstring, int *requires_arg)
 **	to optindex and nextchar
 */
 
-static int	set_long_optarg(char * const argv[], char **optarg, int optindex, int nextchar)
+static int	set_long_optarg(char * const argv[], char **optarg, int optindex)
 {
 	//	Current argv is not finished: arg is everything 
 	//	starting from the next character
-	nextchar += 2;
-	if (argv[optindex][nextchar] == '=')
-		nextchar++;
-	if (argv[optindex][nextchar])
+	size_t	skipped_chars = 2;
+	while (argv[optindex][skipped_chars]
+		&& argv[optindex][skipped_chars] != '=')
+		skipped_chars++;
+	if (argv[optindex][skipped_chars] == '=')
+		skipped_chars++;
+	ft_printf("Opt = '%s'\n", argv[optindex] + skipped_chars);
+	if (argv[optindex][skipped_chars])
 	{
-		*optarg = argv[optindex] + nextchar;
+		*optarg = argv[optindex] + skipped_chars;
 	}
-	//	Arg is in the next argv
 	else
 	{
-		if (argv[optindex + 1] == NULL)
-		{
-			ft_dprintf(STDERR_FILENO, "%s: option '%s' requires an argument\n",
-				argv[0], argv[optindex]);
-			return -1;
-		}
 		*optarg = argv[optindex + 1];
 	}
 	return 0;
@@ -172,7 +208,7 @@ static int	parse_option_line(char * const argv[], const char *optstring,
 		{
 			if (requires_arg == 1)
 			{
-				if (set_long_optarg(argv, optarg, *optindex, *nextchar))
+				if (set_long_optarg(argv, optarg, *optindex))
 					return '?';
 			}
 			//	Skip to after the option
