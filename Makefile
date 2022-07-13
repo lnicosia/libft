@@ -47,7 +47,7 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  ft_ceil.c ft_centiceil.c is_a_special_char.c replace_char.c \
 		  contains_special_chars.c ft_dlist_to_array.c \
 		  reverse_bits.c reverse_endian.c ft_labs.c \
-		  ft_getopt.c \
+		  ft_getopt.c is_arg_an_opt.c \
 
 SRC_SIZE = $(shell ls src | wc -l)
 
@@ -77,7 +77,7 @@ PRINTF_OBJ = $(addprefix $(PRINTF_OBJ_DIR)/, $(PRINTF_SRC_RAW:.c=.o))
 ifeq ($(OS), Windows_NT)
 	OPTI_FLAGS = -O3
 else
-    OPTI_FLAGS = -O3 -flto
+    OPTI_FLAGS = -O3
 endif
 
 CFLAGS = -Wall -Wextra -Werror -Wpadded -I $(INCLUDES_DIR) -I $(PRINTF_INC_DIR) \
@@ -123,6 +123,7 @@ $(BIN_DIR)/$(NAME): $(OBJ_DIR) $(OBJ) $(PRINTF_OBJ_DIR) $(PRINTF_OBJ)
 clean:
 	@printf ${CYAN}"[INFO] Removing objs from the libft\n"${RESET}
 	rm -rf $(OBJ_DIR)
+	rm -rf $(PRINTF_OBJ_DIR)
 
 fclean: clean
 	@printf ${CYAN}"[INFO] Removing $(NAME) from the libft\n"${RESET}

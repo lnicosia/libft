@@ -205,9 +205,18 @@ static int	parse_option_line(char * const argv[], const char *optstring,
 **	Checks if the given string is an option line (starting with '-')
 */
 
-static inline int	is_arg_an_option_line(char *argv)
+static inline int	is_arg_an_option_line(char *arg)
 {
-	return (ft_strlen(argv) > 1 && argv[0] == '-' && argv[1] != '-');
+	size_t	len = ft_strlen(arg);
+	if (len <= 1)
+		return 0;
+	//	Arg is exactly '--'
+	if (arg[0] == '-' && arg[1] == '-'
+		&& len == 2)
+		return 0;
+	if (arg[0] == '-')
+		return 1;
+	return 0;
 }
 
 int		ft_getopt_long(int argc, char * const argv[],
