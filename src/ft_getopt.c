@@ -150,9 +150,8 @@ static int	set_long_optarg(char * const argv[], char **optarg, int optindex)
 		&& argv[optindex][skipped_chars] != '=')
 		skipped_chars++;
 	if (argv[optindex][skipped_chars] == '=')
-		skipped_chars++;
-	if (argv[optindex][skipped_chars])
 	{
+		skipped_chars++;
 		*optarg = argv[optindex] + skipped_chars;
 	}
 	else
