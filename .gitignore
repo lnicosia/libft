@@ -3,3 +3,4 @@ obj
 obj/*.c
 *.swp
 */*.swp
+a.out
