@@ -15,6 +15,7 @@ int		main(int ac, char **av)
 		{"verbose",	no_argument,		0, 'v'},
 		{"version",	no_argument,		0, 'V'},
 		{"ttl",		required_argument,	0, 0},
+		{"optional",optional_argument,  0, 0},
 		{0,			0,			 		0, 0}
 	};
 	printf("\n--FT_GETOPT--\n");
