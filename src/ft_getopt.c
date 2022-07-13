@@ -151,7 +151,6 @@ static int	set_long_optarg(char * const argv[], char **optarg, int optindex)
 		skipped_chars++;
 	if (argv[optindex][skipped_chars] == '=')
 		skipped_chars++;
-	ft_printf("Opt = '%s'\n", argv[optindex] + skipped_chars);
 	if (argv[optindex][skipped_chars])
 	{
 		*optarg = argv[optindex] + skipped_chars;
