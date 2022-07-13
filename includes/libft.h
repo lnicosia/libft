@@ -91,6 +91,8 @@ void				*ft_memset(void *b, int c, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
+long long			ft_atoll(const char *str);
 double				ft_atof(const char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, char const *src, size_t len);
