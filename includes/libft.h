@@ -13,12 +13,21 @@
 #ifndef LIBFT_H
 
 # define LIBFT_H
+//	Standard
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
 # include <stdint.h>
 # include <stdarg.h>
+//	getopt
 # include <getopt.h>
+//	Networking
+# include <netinet/in.h>
+# include <netinet/ip.h>
+# include <netinet/ip_icmp.h>
+# include <netinet/udp.h>
+# include <arpa/inet.h>
+//	Threads
 # include "thread_pool.h"
 
 /*
@@ -225,5 +234,13 @@ int					is_arg_an_opt(char **argv, int argi, const char *optstring,
 									const struct option *longopts);
 
 uint16_t			checksum(void *ptr, int len);
+
+/*
+**	Networking
+*/
+
+void				print_ip4_header(struct ip *header);
+void				print_icmp_header(struct icmphdr *header);
+void				print_udp_header(struct udphdr *header);
 
 #endif
