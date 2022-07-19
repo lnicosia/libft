@@ -221,4 +221,6 @@ int					ft_getopt_long_only(int argc, char * const argv[],
 int					is_arg_an_opt(char **argv, int argi, const char *optstring,
 									const struct option *longopts);
 
+uint16_t			checksum(void *ptr, int len);
+
 #endif
