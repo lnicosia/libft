@@ -46,8 +46,8 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  ft_dlstlen.c ft_stricmp.c print_bits.c ft_strbegin.c \
 		  ft_ceil.c ft_centiceil.c is_a_special_char.c replace_char.c \
 		  contains_special_chars.c ft_dlist_to_array.c \
-		  reverse_bits.c reverse_endian.c ft_labs.c \
-		  ft_getopt.c is_arg_an_opt.c checksum.c \
+		  reverse_bits.c reverse_endian.c ft_labs.c checksum.c \
+		  ft_getopt.c ft_getopt_silent.c is_arg_an_opt.c \
 
 SRC_SIZE = $(shell ls src | wc -l)
 

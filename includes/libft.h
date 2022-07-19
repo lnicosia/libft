@@ -215,6 +215,9 @@ int					ft_getopt(int argc, char * const argv[],
 int					ft_getopt_long(int argc, char * const argv[],
 									const char *optstring, char **optarg,
 									const struct option *longopts, int *longindex);
+int					ft_getopt_silent(int argc, char * const argv[],
+									const char *optstring, char **optarg,
+									const struct option *longopts, int *longindex);
 int					ft_getopt_long_only(int argc, char * const argv[],
 									const char *optstring, char **optarg,
 									const struct option *longopts, int *longindex);
