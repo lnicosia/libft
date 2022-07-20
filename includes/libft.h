@@ -243,4 +243,6 @@ void				print_ip4_header(struct ip *header);
 void				print_icmp_header(struct icmphdr *header);
 void				print_udp_header(struct udphdr *header);
 
+suseconds_t			get_time(void);
+
 #endif
