@@ -35,13 +35,13 @@ void	print_ip4_header(struct ip *header)
 	printf("\e[32m+--------------+------------------+-------------------+\n");
 
 	struct in_addr	*addr = &header->ip_src;
-	printf("\e[32m|\e[33m                  Source addr %-12s           \e[32m|\n",
+	printf("\e[32m|\e[33m                  Source addr %-16s       \e[32m|\n",
 		inet_ntoa(*addr));
 
 	printf("\e[32m+-----------------------------------------------------+\n");
 
 	addr = &header->ip_dst;
-	printf("\e[32m|\e[33m                  Dest addr %-12s             \e[32m|\n",
+	printf("\e[32m|\e[33m                  Dest addr %-16s         \e[32m|\n",
 		inet_ntoa(*addr));
 
 	printf("\e[32m+-----------------------------------------------------+\n");
