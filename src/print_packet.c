@@ -2,6 +2,7 @@
 #include <netinet/in.h>
 #include <netinet/ip.h>
 #include <netinet/ip_icmp.h>
+#include <netinet/udp.h>
 #include <arpa/inet.h>
 
 void	print_ip4_header(struct ip *header)
@@ -70,5 +71,29 @@ void	print_icmp_header(struct icmphdr *header)
 	printf("\e[36m|                  \e[33mPayload                      \e[36m|\n");
 
 	printf("\e[36m+-----------------------------------------------+\n");
+	printf("\e[0m");
+}
+
+void	print_udp_header(struct udphdr *header)
+{
+	printf("\e[36m+--------------+------UDP------+-------------+\n");
+
+	//	Source port
+	printf("\e[36m|\e[33m   Source port %-5hu  \e[36m|\e[33m", ntohs(header->uh_sport));
+	//	Dest port
+	printf("   Dest port %-5hu   \e[36m|\n", ntohs(header->uh_dport));
+
+	printf("\e[36m+----------------------+---------------------+\n");
+
+	//	Length
+	printf("\e[36m|\e[33m       Len %-5hu      \e[36m|\e[33m", ntohs(header->uh_ulen));
+	//	Checksum
+	printf("    Checksum %-5hx   \e[36m|\n", header->uh_sum);
+
+	printf("\e[36m+----------------------+---------------------+\n");
+
+	printf("\e[36m|                  \e[33mPayload                   \e[36m|\n");
+
+	printf("\e[36m+--------------------------------------------+\n");
 	printf("\e[0m");
 }
