@@ -15,14 +15,15 @@ void	print_ip4_header(struct ip *header)
 	//	Type of service
 	printf("   TOS %-3hx \e[32m|\e[33m", header->ip_tos);
 	//	Total length
-	printf("  Total len %-5hd \e[32m|\n", header->ip_len);
+	printf("  Total len %-5hd \e[32m|\n", ntohs(header->ip_len));
 
 	printf("\e[32m+----------------------+-+---------+------------------+\n");
 
 	//	Identification
-	printf("\e[32m|\e[33m         ID %-5hu       \e[32m|\e[33m", header->ip_id);
+	printf("\e[32m|\e[33m         ID %-5hu       \e[32m|\e[33m",
+		ntohs(header->ip_id));
 	//	Flags / Offset
-	printf("         Offset %-5hu       \e[32m|\n", header->ip_off);
+	printf("         Offset %-5hu       \e[32m|\n", ntohs(header->ip_off));
 
 	printf("\e[32m+--------------+---------+--------+-------------------+\n");
 
@@ -31,7 +32,7 @@ void	print_ip4_header(struct ip *header)
 	//	Protocol
 	printf("    Protocol %-3hhu  \e[32m|\e[33m", header->ip_p);
 	//	Header cheskum
-	printf("   Checksum %-5hx  \e[32m|\n", header->ip_sum);
+	printf("   Checksum %-5hx  \e[32m|\n", ntohs(header->ip_sum));
 
 	printf("\e[32m+--------------+------------------+-------------------+\n");
 
@@ -62,9 +63,10 @@ void	print_icmp_header(struct icmphdr *header)
 	printf("\e[36m+--------------+------+-------+-----------------+\n");
 
 	//	Identifier
-	printf("\e[36m|\e[33m       ID %-5hu      \e[36m|\e[33m", header->un.echo.id);
+	printf("\e[36m|\e[33m       ID %-5hu      \e[36m|\e[33m",
+		ntohs(header->un.echo.id));
 	//	Sequence
-	printf("       Sequence %-5hu    \e[36m|\n", header->un.echo.sequence);
+	printf("       Sequence %-5hu    \e[36m|\n", ntohs(header->un.echo.sequence));
 
 	printf("\e[36m+---------------------+-------------------------+\n");
 
@@ -76,24 +78,24 @@ void	print_icmp_header(struct icmphdr *header)
 
 void	print_udp_header(struct udphdr *header)
 {
-	printf("\e[36m+--------------+------UDP------+-------------+\n");
+	printf("\e[35m+--------------+------UDP------+-------------+\n");
 
 	//	Source port
-	printf("\e[36m|\e[33m   Source port %-5hu  \e[36m|\e[33m", ntohs(header->uh_sport));
+	printf("\e[35m|\e[33m   Source port %-5hu  \e[35m|\e[33m", ntohs(header->uh_sport));
 	//	Dest port
-	printf("   Dest port %-5hu   \e[36m|\n", ntohs(header->uh_dport));
+	printf("   Dest port %-5hu   \e[35m|\n", ntohs(header->uh_dport));
 
-	printf("\e[36m+----------------------+---------------------+\n");
+	printf("\e[35m+----------------------+---------------------+\n");
 
 	//	Length
-	printf("\e[36m|\e[33m       Len %-5hu      \e[36m|\e[33m", ntohs(header->uh_ulen));
+	printf("\e[35m|\e[33m       Len %-5hu      \e[35m|\e[33m", ntohs(header->uh_ulen));
 	//	Checksum
-	printf("    Checksum %-5hx   \e[36m|\n", header->uh_sum);
+	printf("    Checksum %-5hx   \e[35m|\n", header->uh_sum);
 
-	printf("\e[36m+----------------------+---------------------+\n");
+	printf("\e[35m+----------------------+---------------------+\n");
 
-	printf("\e[36m|                  \e[33mPayload                   \e[36m|\n");
+	printf("\e[35m|                  \e[33mPayload                   \e[35m|\n");
 
-	printf("\e[36m+--------------------------------------------+\n");
+	printf("\e[35m+--------------------------------------------+\n");
 	printf("\e[0m");
 }
