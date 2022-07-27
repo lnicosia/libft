@@ -1,9 +1,28 @@
+#include "libft.h"
 #include <stdio.h>
 #include <netinet/in.h>
 #include <netinet/ip.h>
 #include <netinet/ip_icmp.h>
 #include <netinet/udp.h>
 #include <arpa/inet.h>
+#include <netdb.h>
+
+static char	*print_ip(struct in_addr _addr)
+{
+	struct sockaddr_in	addr =
+	{
+		AF_INET,
+		0,
+		_addr,
+		{ 0 }
+	};
+	static char	host[512];
+	ft_bzero(host, sizeof(host));
+	if (getnameinfo((struct sockaddr*)&addr, sizeof(struct sockaddr),
+			host, sizeof(host), NULL, 0, 0))
+		return inet_ntoa(addr.sin_addr);
+	return host;
+}
 
 void	print_ip4_header(struct ip *header)
 {
@@ -37,14 +56,14 @@ void	print_ip4_header(struct ip *header)
 	printf("\e[32m+--------------+------------------+-------------------+\n");
 
 	struct in_addr	*addr = &header->ip_src;
-	printf("\e[32m|\e[33m                  Source addr %-16s       \e[32m|\n",
-		inet_ntoa(*addr));
+	printf("\e[32m|\e[33m       Source addr %s (%s)      \e[32m|\n",
+		inet_ntoa(*addr), print_ip(*addr));
 
 	printf("\e[32m+-----------------------------------------------------+\n");
 
 	addr = &header->ip_dst;
-	printf("\e[32m|\e[33m                  Dest addr %-16s         \e[32m|\n",
-		inet_ntoa(*addr));
+	printf("\e[32m|\e[33m       Dest addr %s (%s)        \e[32m|\n",
+		inet_ntoa(*addr), print_ip(*addr));
 
 	printf("\e[32m+-----------------------------------------------------+\n");
 }
@@ -58,7 +77,7 @@ void	print_icmp_header(struct icmphdr *header)
 	//	Code
 	printf("    Code %-3hhu  \e[36m|\e[33m", header->code);
 	//	Checksum
-	printf("  Checksum %-5hx \e[36m|\n", header->checksum);
+	printf("  Checksum %-5hx \e[36m|\n", ntohs(header->checksum));
 
 	printf("\e[36m+--------------+------+-------+-----------------+\n");
 
@@ -90,7 +109,7 @@ void	print_udp_header(struct udphdr *header)
 	//	Length
 	printf("\e[35m|\e[33m       Len %-5hu      \e[35m|\e[33m", ntohs(header->uh_ulen));
 	//	Checksum
-	printf("    Checksum %-5hx   \e[35m|\n", header->uh_sum);
+	printf("    Checksum %-5hx   \e[35m|\n", ntohs(header->uh_sum));
 
 	printf("\e[35m+----------------------+---------------------+\n");
 
