@@ -244,5 +244,6 @@ void				print_icmp_header(struct icmphdr *header);
 void				print_udp_header(struct udphdr *header);
 
 suseconds_t			get_time(void);
+suseconds_t			timeval_to_usec(struct timeval t);
 
 #endif
