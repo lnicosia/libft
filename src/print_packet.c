@@ -65,7 +65,7 @@ void	print_ip4_header(struct ip *header)
 	printf("\e[32m|\e[33m       Dest addr %s (%s)        \e[32m|\n",
 		inet_ntoa(*addr), print_ip(*addr));
 
-	printf("\e[32m+-----------------------------------------------------+\n");
+	printf("\e[32m+-----------------------------------------------------+\e[0m\n");
 }
 
 void	print_icmp_header(struct icmphdr *header)
@@ -91,8 +91,7 @@ void	print_icmp_header(struct icmphdr *header)
 
 	printf("\e[36m|                  \e[33mPayload                      \e[36m|\n");
 
-	printf("\e[36m+-----------------------------------------------+\n");
-	printf("\e[0m");
+	printf("\e[36m+-----------------------------------------------+\e[0m\n");
 }
 
 void	print_udp_header(struct udphdr *header)
@@ -115,6 +114,5 @@ void	print_udp_header(struct udphdr *header)
 
 	printf("\e[35m|                  \e[33mPayload                   \e[35m|\n");
 
-	printf("\e[35m+--------------------------------------------+\n");
-	printf("\e[0m");
+	printf("\e[35m+--------------------------------------------+\e[0m\n");
 }
