@@ -267,7 +267,7 @@ int		ft_getopt_long(int argc, char * const argv[],
 	//	Search for a '-' or a '--' in argv
 	while (optindex < argc)
 	{
-		if (is_arg_an_option_line(argv[optindex]))
+		if (is_arg_an_opt(argv, optindex, optstring, longopts) == 1)
 		{
 			ret = parse_option_line(argv, optstring, longopts, longindex,
 				optarg, &optindex, &nextchar);

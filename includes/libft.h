@@ -230,8 +230,8 @@ int					ft_getopt_silent(int argc, char * const argv[],
 int					ft_getopt_long_only(int argc, char * const argv[],
 									const char *optstring, char **optarg,
 									const struct option *longopts, int *longindex);
-int					is_arg_an_opt(char **argv, int argi, const char *optstring,
-									const struct option *longopts);
+int					is_arg_an_opt(char * const argv[], int argi,
+						const char *optstring, const struct option *longopts);
 
 uint16_t			checksum(void *ptr, int len);
 
