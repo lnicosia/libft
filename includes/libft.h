@@ -27,8 +27,6 @@
 # include <netinet/ip_icmp.h>
 # include <netinet/udp.h>
 # include <arpa/inet.h>
-//	Threads
-# include "thread_pool.h"
 
 /*
 **	Generic simple list
