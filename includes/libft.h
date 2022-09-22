@@ -26,6 +26,7 @@
 # include <netinet/ip.h>
 # include <netinet/ip_icmp.h>
 # include <netinet/udp.h>
+# include <netinet/tcp.h>
 # include <arpa/inet.h>
 
 /*
@@ -240,6 +241,7 @@ uint16_t			checksum(void *ptr, int len);
 void				print_ip4_header(struct ip *header);
 void				print_icmp_header(struct icmphdr *header);
 void				print_udp_header(struct udphdr *header);
+void				print_tcp_header(struct tcphdr *header);
 
 uint64_t			get_time(void);
 uint64_t			timeval_to_usec(struct timeval t);

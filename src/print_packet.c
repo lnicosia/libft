@@ -4,6 +4,7 @@
 #include <netinet/ip.h>
 #include <netinet/ip_icmp.h>
 #include <netinet/udp.h>
+#include <netinet/tcp.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 
@@ -113,6 +114,53 @@ void	print_udp_header(struct udphdr *header)
 	printf("\e[35m+----------------------+---------------------+\n");
 
 	printf("\e[35m|                  \e[33mPayload                   \e[35m|\n");
+
+	printf("\e[35m+--------------------------------------------+\e[0m\n");
+}
+
+void	print_tcp_header(struct tcphdr *header)
+{
+	printf("\e[35m+--------------+------TCP------+-------------+\n");
+
+	//	Source port
+	printf("\e[35m|\e[33m   Source port %-5hu  \e[35m|\e[33m", ntohs(header->th_sport));
+	//	Dest port
+	printf("   Dest port %-5hu   \e[35m|\n", ntohs(header->th_dport));
+
+	printf("\e[35m+----------------------+---------------------+\n");
+
+	//	Sequence number
+	printf("\e[35m|\e[33m   Sequ number %-5u  \e[35m|\e[33m", ntohs(header->th_seq));
+	//	Ack number
+	printf("    Ack number %-5x \e[35m|\n", ntohs(header->th_ack));
+
+	printf("\e[35m+----------------------+---------------------+\n");
+
+	//	Flags
+	printf("\e[35m|\e[33m   Flags ");
+	if (header->th_flags & TH_FIN)
+		printf("/FIN");
+	if (header->th_flags & TH_SYN)
+		printf("/SYN");
+	if (header->th_flags & TH_RST)
+		printf("/RST");
+	if (header->th_flags & TH_PUSH)
+		printf("/PUSH");
+	if (header->th_flags & TH_ACK)
+		printf("/ACK");
+	if (header->th_flags & TH_URG)
+		printf("/URG");
+	//	Window size
+	printf(" \e[35m|\e[33m    Winsize %-5d \e[35m|\n", ntohs(header->th_win));
+
+	printf("\e[35m+----------------------+---------------------+\n");
+
+	//	Checksum
+	printf("\e[35m|\e[33m   Checksum %-5x  \e[35m|\e[33m", ntohs(header->th_sum));
+	//	Urgent pointer
+	printf("    Urgent pointer %-5d \e[35m|\n", ntohs(header->th_urp));
+
+	printf("\e[35m+----------------------+---------------------+\n");
 
 	printf("\e[35m+--------------------------------------------+\e[0m\n");
 }
