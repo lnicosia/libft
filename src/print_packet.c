@@ -137,7 +137,7 @@ void	print_tcp_header(struct tcphdr *header)
 	printf("\e[35m+----------------------+---------------------+\n");
 
 	//	Flags
-	printf("\e[35m|\e[33m   Flags ");
+	printf("\e[35m|\e[33m Offset %-2d Flags ", header->th_off);
 	if (header->th_flags & TH_FIN)
 		printf("/FIN");
 	if (header->th_flags & TH_SYN)
@@ -161,6 +161,23 @@ void	print_tcp_header(struct tcphdr *header)
 	printf("    Urgent pointer %-5d \e[35m|\n", ntohs(header->th_urp));
 
 	printf("\e[35m+----------------------+---------------------+\n");
+
+	// Options
+	for (int i = 0; i < header->th_off - 5; i++)
+	{
+		struct tcp_opt {
+			uint8_t	kind;
+			uint8_t	len;
+			uint8_t	data1;
+			uint8_t	data2;
+		} *opt;
+
+		opt = (struct tcp_opt*)((void*)header + sizeof(struct tcphdr) + i * 4);
+		printf("\e[35m|\e[33m   TCP Option (%hhu)", opt->kind);
+		printf(" Len = %hhu", opt->len);
+		printf(" Value = 0x%0x%0x", opt->data1, opt->data2);
+		printf(" \e[35m|\n");
+	}
 
 	printf("\e[35m+--------------------------------------------+\e[0m\n");
 }
