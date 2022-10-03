@@ -39,8 +39,8 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 		  ft_clamp.c ft_fclamp.c ft_fclamp.c ft_atof.c ft_getlen.c \
 		  ft_sitoa.c ft_realloc.c ft_getsize.c ft_delindex.c ft_perror.c \
 		  ft_lstcontains.c ft_lstpopfront.c ft_lstdelfront.c \
-		  ft_lstdelnode.c ft_convert_base.c ft_ishexa.c thread_pool.c \
-		  thread_pool_work.c init_tpool.c free_tpool.c skip_chars.c \
+		  ft_lstdelnode.c ft_convert_base.c ft_ishexa.c tpool.c \
+		  tpool_job.c init_tpool.c free_tpool.c skip_chars.c \
 		  check_chars.c ft_rmchar.c ft_dlstnew.c ft_dlstdelfront.c \
 		  ft_dlstinsert.c ft_dlstbackward.c ft_dlstforward.c \
 		  ft_dlstlen.c ft_stricmp.c print_bits.c ft_strbegin.c \
@@ -51,7 +51,7 @@ SRC_RAW = ft_memccpy.c ft_memcpy.c ft_memset.c ft_bzero.c ft_memmove.c \
 
 SRC_SIZE = $(shell ls src | wc -l)
 
-HEADERS = libft.h thread_pool.h get_next_line.h
+HEADERS = libft.h tpool.h get_next_line.h
 
 PRINTF_SRC_RAW = ft_printf.c ft_dprintf.c base_utils.c parse_colors.c \
 				 parse_flags.c parse_functions.c pf_atoi.c pf_float_padding.c \

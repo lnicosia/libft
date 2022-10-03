@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "thread_pool.h"
+#include "tpool.h"
 #include "libft.h"
 
 int		free_tpool2(t_tpool *tpool)
@@ -19,7 +19,7 @@ int		free_tpool2(t_tpool *tpool)
 	if (pthread_mutex_destroy(&tpool->mutex))
 		custom_error("Could not destroy the mutex\n");
 	if (pthread_cond_destroy(&tpool->worker_cond))
-		custom_error("Could not destroy the worker condition\n");
+		custom_error("Could not destroy the jober condition\n");
 	if (pthread_cond_destroy(&tpool->main_cond))
 		custom_error("Could not destroy the main condition\n");
 	return (0);
@@ -27,19 +27,19 @@ int		free_tpool2(t_tpool *tpool)
 
 int		free_tpool(t_tpool *tpool)
 {
-	t_work	*work;
-	t_work	*tmp;
+	t_job	*job;
+	t_job	*tmp;
 	int		i;
 
 	if (!tpool->threads)
 		return (0);
 	pthread_mutex_lock(&tpool->mutex);
-	work = tpool->works;
-	while (work)
+	job = tpool->jobs;
+	while (job)
 	{
-		tmp = work->next;
-		destroy_work(work);
-		work = tmp;
+		tmp = job->next;
+		destroy_job(job);
+		job = tmp;
 	}
 	tpool->stop = 1;
 	pthread_cond_broadcast(&tpool->worker_cond);

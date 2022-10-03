@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "thread_pool.h"
+#include "tpool.h"
 #include "libft.h"
 
-void	perform_work(t_tpool *tpool)
+void	perform_job(t_tpool *tpool)
 {
-	t_work	*work;
+	t_job	*job;
 
-	work = get_work(tpool);
+	job = get_job(tpool);
 	tpool->nb_working_threads++;
 	pthread_mutex_unlock(&tpool->mutex);
-	if (work->func(work->param))
+	if (job->func(job->param))
 		tpool->err = 1;
-	destroy_work(work);
+	destroy_job(job);
 	pthread_mutex_lock(&tpool->mutex);
 	tpool->nb_working_threads--;
-	if (!tpool->works && tpool->nb_working_threads == 0 && !tpool->stop)
+	if (!tpool->jobs && tpool->nb_working_threads == 0 && !tpool->stop)
 		pthread_cond_signal(&tpool->main_cond);
 	pthread_mutex_unlock(&tpool->mutex);
 }
@@ -45,14 +45,14 @@ void	*tpool_worker(void *param)
 	while (1)
 	{
 		pthread_mutex_lock(&tpool->mutex);
-		while (!tpool->works && !tpool->stop)
+		while (!tpool->jobs && !tpool->stop)
 			pthread_cond_wait(&tpool->worker_cond, &tpool->mutex);
 		if (tpool->stop)
 			break ;
-		perform_work(tpool);
+		perform_job(tpool);
 	}
 	tpool->nb_alive_threads--;
-	if (!tpool->works && tpool->nb_alive_threads == 0 && tpool->stop)
+	if (!tpool->jobs && tpool->nb_alive_threads == 0 && tpool->stop)
 		pthread_cond_signal(&tpool->main_cond);
 	pthread_mutex_unlock(&tpool->mutex);
 	return (0);
@@ -60,16 +60,16 @@ void	*tpool_worker(void *param)
 
 void	*tpool_work(t_tpool *tpool, int (*func)(void *), void *param)
 {
-	t_work	*work;
+	t_job	*job;
 
 	if (!func)
 		return (NULL);
-	if (!(work = create_work(func, param)))
+	if (!(job = create_job(func, param)))
 		return (NULL);
 	pthread_mutex_lock(&tpool->mutex);
-	if (tpool->works)
-		work->next = tpool->works;
-	tpool->works = work;
+	if (tpool->jobs)
+		job->next = tpool->jobs;
+	tpool->jobs = job;
 	pthread_cond_broadcast(&tpool->worker_cond);
 	pthread_mutex_unlock(&tpool->mutex);
 	return (0);
@@ -82,7 +82,7 @@ int		tpool_wait(t_tpool *tpool)
 	pthread_mutex_lock(&tpool->mutex);
 	while ((!tpool->stop && tpool->nb_working_threads > 0)
 		|| (tpool->stop && tpool->nb_alive_threads > 0)
-		|| tpool->works)
+		|| tpool->jobs)
 		pthread_cond_wait(&tpool->main_cond, &tpool->mutex);
 	pthread_mutex_unlock(&tpool->mutex);
 	if (tpool->err)

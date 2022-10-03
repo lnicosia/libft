@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_pool_work.c                                 :+:      :+:    :+:   */
+/*   thread_pool_job.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "thread_pool.h"
+#include "tpool.h"
 #include "libft.h"
 
 /*
-**	Creates a new work and adds it to the list
+**	Creates a new job and adds it to the list
 */
 
-t_work	*create_work(int (*func)(void*), void *param)
+t_job	*create_job(int (*func)(void*), void *param)
 {
-	t_work	*new;
+	t_job	*new;
 
 	if (!func)
 		return (0);
-	if (!(new = (t_work*)ft_memalloc(sizeof(t_work))))
+	if (!(new = (t_job*)ft_memalloc(sizeof(t_job))))
 		return (0);
 	new->func = func;
 	new->param = param;
@@ -32,32 +32,32 @@ t_work	*create_work(int (*func)(void*), void *param)
 }
 
 /*
-**	Free a given work
+**	Free a given job
 */
 
-void	destroy_work(t_work *work)
+void	destroy_job(t_job *job)
 {
-	if (!work)
+	if (!job)
 		return ;
-	free(work);
-	work = NULL;
+	free(job);
+	job = NULL;
 }
 
 /*
-**	Returns the first work from the list to execute it in an avaible thread
-**	When the works list is emply, signals the main thread that every work
+**	Returns the first job from the list to execute it in an avaible thread
+**	When the jobs list is emply, signals the main thread that every job
 **	was recovered by the threads
 */
 
-t_work	*get_work(t_tpool *tpool)
+t_job	*get_job(t_tpool *tpool)
 {
-	t_work	*work;
+	t_job	*job;
 
-	if (!tpool || !tpool->works)
+	if (!tpool || !tpool->jobs)
 		return (0);
-	work = tpool->works;
-	tpool->works = tpool->works->next;
-	if (!tpool->works)
+	job = tpool->jobs;
+	tpool->jobs = tpool->jobs->next;
+	if (!tpool->jobs)
 		pthread_cond_signal(&tpool->main_cond);
-	return (work);
+	return (job);
 }

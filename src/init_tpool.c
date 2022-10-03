@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "thread_pool.h"
+#include "tpool.h"
 #include "libft.h"
 
 int		init_tpool(t_tpool *tpool, int nb_threads)
