@@ -6,12 +6,13 @@
 /*   By: lnicosia <lnicosia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:05:31 by lnicosia          #+#    #+#             */
-/*   Updated: 2022/05/27 16:09:11 by lnicosia         ###   ########.fr       */
+/*   Updated: 2022/10/06 10:44:11 by lumenthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft.h"
+#include <unistd.h>
 
 int		lst_contains(t_list *lst, t_read **curr, int fd)
 {
@@ -53,7 +54,7 @@ int		set_line(t_read *curr, char **line)
 	if (!(*line = ft_strnew(i)))
 		return (-1);
 	ft_strncpy(*line, curr->str, i);
-	*line = ft_rmchar(*line, '\r');
+	*line = (char *)ft_rmchar(*line, '\r');
 	if (i < ft_strlen(curr->str) - 1)
 	{
 		tmp = curr->str;
@@ -71,12 +72,34 @@ int		set_line(t_read *curr, char **line)
 	return (0);
 }
 
+void	free_datas(t_list **datas)
+{
+	t_list *tmp = *datas;
+	t_list *next;
+	t_read *content;
+
+	while (tmp) {
+		next = tmp->next;
+		if (tmp->content) {
+			content = (t_read *)tmp->content;
+			if (content->str)
+				free(content->str);
+			free(content);
+		}
+		free(tmp);
+		tmp = next;
+	}
+	*datas = NULL;
+}
+
 int		set_data(t_list **datas, char **line, t_read *curr, int new)
 {
 	if (curr->str[0])
 	{
-		if (set_line(curr, line) == -1)
+		if (set_line(curr, line) == -1) {
+			free_datas(datas);
 			return (-1);
+		}
 		if (new == 0)
 		{
 			ft_lstadd(datas, ft_lstnew(curr, sizeof(*curr)));
@@ -91,6 +114,7 @@ int		set_data(t_list **datas, char **line, t_read *curr, int new)
 		free(curr);
 		curr = NULL;
 	}
+	free_datas(datas);
 	return (0);
 }
 
@@ -102,6 +126,7 @@ int		get_next_line(const int fd, char **line)
 	char			buff[BUFF_SIZE + 1];
 	int				ret;
 
+	ft_bzero(buff, sizeof(buff));
 	if (fd < 0 || line == NULL || BUFF_SIZE == 0 || read(fd, buff, 0) < 0)
 		return (-1);
 	if ((new = lst_contains(datas, &curr, fd)) == 0)
@@ -115,7 +140,7 @@ int		get_next_line(const int fd, char **line)
 	while (!ft_strchr(curr->str, NEWLINE) && (ret = read(fd, buff, BUFF_SIZE))
 		&& !contains_zero(buff, ret))
 	{
-		if (ret < 0 || !(curr->str = ft_strjoin_free(curr->str, buff)))
+		if (ret < 0 || !(curr->str = (char *)ft_strjoin_free(curr->str, buff)))
 			return (-1);
 		buff[ret] = '\0';
 	}
